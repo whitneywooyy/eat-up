@@ -5,11 +5,12 @@ var cors = require('cors');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('passport');
-var TwitterStrategy = require('passport-twitter').Strategy;
+// var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // CONTROLLERS
+var UserCtrl = require('./lib/controllers/UserCtrl');
 
 // EXPRESS
 var app = express();
@@ -28,18 +29,20 @@ app.use(passport.session());
 
 // requireAuth handles multiple login entrypoints
 var requireAuth = function(req, res, next) {
-  console.log("is authed?", req.user);
+  console.log("req", req);	// req.user is undefined but req returns a huge object of data - Twitter, Facebook
   if (req.isAuthenticated()) {
-  	console.log("You're authed");
+  	console.log("You're authed", req.user);
     return next();
   } else {
 	  console.log('Im redirecting now...');
 	  return res.redirect('/#/login');
 	}	
-}
+};
 app.get('/test', requireAuth, function(req, res) {
-  return res.sendFile(__dirname + '/public/home');
-})
+  return res.send("Cool");
+  // sendFile(__dirname + '/public');
+});
+app.post('/user', UserCtrl.create);
 
 // PASSPORT
 // .serializeUser and .deserializeUser shared between Twitter, Facebook, AND Google
@@ -49,17 +52,17 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
-passport.use(new TwitterStrategy({
-	// Eat Up App - dev.twitter.com/apps
-  consumerKey: TWITTER_CONSUMER_KEY,
-  consumerSecret: TWITTER_CONSUMER_SECRET,
-  callbackURL: 'http://localhost:' + port + '/auth/twitter/callback'
-}, function(token, tokenSecret, profile, done) {
-  // console.log('some kind of test', token);
-  process.nextTick(function(){
-  	return done(null, profile);
-  })
-}));
+// passport.use(new TwitterStrategy({
+// 	// Eat Up App - dev.twitter.com/apps
+//   consumerKey: TWITTER_CONSUMER_KEY,
+//   consumerSecret: TWITTER_CONSUMER_SECRET,
+//   callbackURL: 'http://localhost:' + port + '/auth/twitter/callback'
+// }, function(token, tokenSecret, profile, done) {
+//   // console.log('some kind of test', token);
+//   process.nextTick(function(){
+//   	return done(null, profile);
+//   })
+// }));
 passport.use(new FacebookStrategy({
 	// Eat Up App - Facebook Developers
     clientID: FACEBOOK_APP_ID,
@@ -67,6 +70,7 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://localhost:" + port + "/auth/facebook/callback"
   }, function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
+    	console.log(profile);
       return done(null, profile);
     });
   }
@@ -84,13 +88,13 @@ passport.use(new GoogleStrategy({
 ));
 
 // ENDPOINTS
-app.get('/auth/twitter', passport.authenticate('twitter'));
-app.get('/auth/twitter/callback', passport.authenticate('twitter', {
-  successRedirect: '/#/username/dashboard',
-  failureRedirect: '/#/login'
-}), function(req, res) {
-	console.log(req.session);
-});
+// app.get('/auth/twitter', passport.authenticate('twitter'));
+// app.get('/auth/twitter/callback', passport.authenticate('twitter', {
+//   successRedirect: '/#/username/dashboard',
+//   failureRedirect: '/#/login'
+// }), function(req, res) {
+// 	console.log(req.session);
+// });
 app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { 
 	successRedirect: '/#/username/dashboard',
