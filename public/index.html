@@ -1,17 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="eatUp">
 <head>
 	<title></title>
 </head>
 <body>
+	<!-- <div ng-controller="userProfileCtrl">{{test}}</div> -->
+	<header>
+		<nav>
+			<ul>
+				<li><a ui-sref="browseRestaurants" title="Browse Restaurants">Browse Restaurants</a></li>
+				<li><a ui-sref="browseUsers" title="Browse Users">Browse Users</a></li>
+				<li><a ui-sref="login" title="Login">Login</a></li>
+				<li><a ui-sref="register" title="Register">Register</a></li>
+				<li><a ui-sref="userProfile" title="Your Profile">Your Profile</a></li>
+				<li><a ui-sref="userProfile.messages" title="Your Messages">Your Messages</a></li>
+				<li><a ui-sref="userProfile.userDashboard" title="Dashboard">Dashboard</a></li>
+			</ul>
+		</nav>
+	</header>
+	<input type="text" ng-model="another" /> {{another}}
+	<hr>
+	<div ui-view></div>
 
 	<!-- SCRIPTS -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.14/angular-ui-router.js"></script>
-	<script type="text/javascript" src=""></script>
-	<script type="text/javascript" src=""></script>
-	<script type="text/javascript" src=""></script>
-	<script type="text/javascript" src=""></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/controllers/browseRestaurantsCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/browseUsersCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/forumMainCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/forumTopicCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/forumThreadCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/loginCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/messagesCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/registerCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/singleMessageCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/userDashboardCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/userProfileCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/homeCtrl.js"></script>
 	<script type="text/javascript" src=""></script>
 </body>
 </html>
