@@ -34,6 +34,13 @@ mongoose.connection.once('open', function() {
   console.log('Connected to MongoDB at ', mongoUri);
 });
 
+// *** Remove keys and secrets before pushing to Github ***
+// var TWITTER_CONSUMER_KEY = "jhImqkwsWZzwTQPcp8ZWuriTV";
+// var TWITTER_CONSUMER_SECRET = "IiBEorFNAA4J0g5Vyr3VvMvfpLaHt7DtRVIL0Szu6M0CW4FHip";
+var FACEBOOK_APP_ID = "964186640278623";
+var FACEBOOK_APP_SECRET = "2805712524f0d1e61bbec792c4b41766";
+var GOOGLE_CLIENT_ID = "274755072333-k81t8bmpdjesmch2frogfn14j6f982k0.apps.googleusercontent.com";
+var GOOGLE_CLIENT_SECRET = "aBV8a1c8VJM2RVcg8O-m7zl3";
 
 // MIDDLEWARE
 // app.use(morgan('dev'));
@@ -93,38 +100,38 @@ passport.use(new FacebookStrategy({
     // 	console.log("profile", profile);
     //   return done(null, profile);
     // });
-console.log("profile", profile);
-	User.findOne({
-		'facebook.id': profile.id 
-    }, function(err, user) {
-        if (err) {
-            return done(err);
-        }
-        //No user was found... so create a new user with values from Facebook (all the profile. stuff)
-        if (!user) {
-            user = new User({
-            	facebookId: profile.id,
-                firstName: profile.name.givenName,
-                lastName: profile.name.familyName,
-                gender: profile.gender,
-                location: profile.location,
-                facebookProfilePic: profile.photos[0].value,
-                ageRange: profile._json.age_range,
-                email: profile.email,
-                // provider: 'facebook',
-                //now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
-                facebook: profile._json
-            });
-            user.save(function(err) {
-                if (err) console.log(err);
-                return done(err, user);
-            });
-        } else {
-            //found user. Return
-            return done(err, user);
-        }
-	})
-	return done(null, profile);
+	console.log("profile", profile);
+		User.findOne({
+			'facebook.id': profile.id 
+	    }, function(err, user) {
+	        if (err) {
+	            return done(err);
+	        }
+	        //No user was found... so create a new user with values from Facebook (all the profile. stuff)
+	        if (!user) {
+	            user = new User({
+	            	facebookId: profile.id,
+	                firstName: profile.name.givenName,
+	                lastName: profile.name.familyName,
+	                gender: profile.gender,
+	                location: profile.location,
+	                facebookProfilePic: profile.photos[0].value,
+	                ageRange: profile._json.age_range,
+	                email: profile.email,
+	                // provider: 'facebook',
+	                //now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
+	                facebook: profile._json
+	            });
+	            user.save(function(err) {
+	                if (err) console.log(err);
+	                return done(err, user);
+	            });
+	        } else {
+	            //found user. Return
+	            return done(err, user);
+	        }
+		})
+		return done(null, profile);
 }));
 // passport.use(new GoogleStrategy({
 // 	// Eat Up App - Google Developers Console
@@ -139,12 +146,20 @@ console.log("profile", profile);
 // ));
 
 // ENDPOINTS
-app.get('/test', requireAuth, function(req, res) {
+	// app.get('/api/test', requireAuth, function(req, res) {
+	// 	console.log('req on req', req.user);
+	//   return res.send({
+	//   	user: req.user
+	//   });
+	//   // sendFile(__dirname + '/public');
+	// });
+
+	// In Dashboard Angular Service, call $http /api/dashboard to retrieve this data
+	app.get('/api/dashboard', requireAuth, function(req, res) {
 		console.log('req on req', req.user);
-	  return res.send("Cool", {
+	  return res.send({
 	  	user: req.user
 	  });
-	  // sendFile(__dirname + '/public');
 	});
 	// app.get('/', function(req, res){
 	// 	res.render('home');
@@ -152,7 +167,8 @@ app.get('/test', requireAuth, function(req, res) {
 	// app.get('/login', function(req, res){
 	// 	res.render('login');
 	// });
-	app.post('/user', UserCtrl.create);
+	app.post('/api/user', UserCtrl.create);
+	app.put('/api/user')
 
 	// SOCIAL OAUTH
 	app.get('/auth/facebook', passport.authenticate('facebook'));

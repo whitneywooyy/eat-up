@@ -30,9 +30,9 @@ app.config(function($stateProvider, $urlRouterProvider){
     url: "/dashboard",
     templateUrl: "../templates/userProfileTmpl.userDashboard.html",
     controller: "userDashboardCtrl"
-    resolve: {
+    // resolve: {
       
-    }
+    // }
   })
   .state('browseUsers', {
     url: "/browse-users",
