@@ -16,27 +16,77 @@ app.config(function($stateProvider, $urlRouterProvider){
     templateUrl: "../templates/loginTmpl.html",
     controller: "loginCtrl"
   })
-  // .state('register', {
-  //   url: "/register",
-  //   templateUrl: "../templates/registerTmpl.html",
-  //   controller: "registerCtrl"
-  // })
   .state('userProfile', {
     url: "/username", // custom :username as url??
-    templateUrl: "../templates/userProfileTmpl.html", // Each page only shows what's on this html page...
+    templateUrl: "../templates/userProfileTmpl.html",
     controller: "userProfileCtrl"
   })
-  .state('userProfile.userDashboard', {
-    url: "/dashboard",
-    templateUrl: "../templates/userProfileTmpl.userDashboard.html",
-    controller: "userDashboardCtrl",
-    // resolve: {
-    //   authenticate: authenticate  
-    // }
-    data: {
-      requireLogin: true
-    }
-  })
+    .state('userProfile.userDashboard', {
+      url: "/dashboard",
+      templateUrl: "../templates/userDashboardTmpl.html",
+      controller: "userDashboardCtrl",
+      data: {
+        requireLogin: true
+      }
+    })
+      .state('userProfile.userDashboard.messages', {
+        url: "/messages",
+        templateUrl: "../templates/messagesTmpl.html",
+        controller: "messagesCtrl"
+      })
+        .state('userProfile.userDashboard.messages.singleMessage', {
+          url: "/:messageId",
+          templateUrl: "../templates/singleMessageTmpl.html",
+          controller: "singleMessageCtrl"
+        })
+      .state('userProfile.userDashboard.editProfile', {
+        url: "/edit-profile",
+        templateUrl: "../templates/editProfileTmpl.html",
+        controller: "userDashboardCtrl",
+        data: {
+          requireLogin: true
+        }
+      })
+        .state('userProfile.userDashboard.editProfile.name', {
+          url: "/name",
+          templateUrl: "../templates/profileSettings/Tmpl.name.html",
+          controller: "editProfileCtrl"
+        })
+        .state('userProfile.userDashboard.editProfile.username', {
+          url: "/username",
+          templateUrl: "../templates/profileSettings/Tmpl.username.html",
+          controller: "editProfileCtrl"
+        })
+        .state('userProfile.userDashboard.editProfile.email', {
+          url: "/email",
+          templateUrl: "../templates/profileSettings/Tmpl.email.html",
+          controller: "editProfileCtrl"
+        })
+        .state('userProfile.userDashboard.editProfile.password', {
+          url: "/password",
+          templateUrl: "../templates/profileSettings/Tmpl.password.html",
+          controller: "editProfileCtrl"
+        })
+        .state('userProfile.userDashboard.editProfile.location', {
+          url: "/location",
+          templateUrl: "../templates/profileSettings/Tmpl.location.html",
+          controller: "editProfileCtrl"
+        })
+        .state('userProfile.userDashboard.editProfile.gender', {
+          url: "/gender",
+          templateUrl: "../templates/profileSettings/Tmpl.gender.html",
+          controller: "editProfileCtrl"
+        })
+        .state('userProfile.userDashboard.editProfile.birthday', {
+          url: "/birthday",
+          templateUrl: "../templates/profileSettings/Tmpl.birthday.html",
+          controller: "editProfileCtrl"
+        })
+        .state('userProfile.userDashboard.editProfile.bio', {
+          url: "/bio",
+          templateUrl: "../templates/profileSettings/Tmpl.bio.html",
+          controller: "editProfileCtrl"
+        })
   .state('browseUsers', {
     url: "/browse-users",
     templateUrl: "../templates/browseUsersTmpl.html",
@@ -47,17 +97,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     templateUrl: "../templates/browseRestaurantsTmpl.html",
     controller: "browseRestaurantsCtrl"
   })
-  .state('userProfile.userDashboard.messages', {
-    url: "/messages",
-    templateUrl: "../templates/userProfileTmpl.messages.html",
-    controller: "messagesCtrl"
-  })
-  .state('userProfile.userDashboard.messages.singleMessage', {
-    url: "/:messageId",
-    templateUrl: "../templates/userProfileTmpl.messages.singleMessage.html",
-    controller: "singleMessageCtrl"
-    // Need resolve?
-  })
+  
   
   // FORUM STATES
 
@@ -77,34 +117,19 @@ app.config(function($stateProvider, $urlRouterProvider){
   //   controller: "forumThreadCtrl"
   // })
 
-  // var authenticate = function($q, user, $state, $timeout){
-  //   if (user.isAuthenticated()){
-  //     return $q.when();
-  //   } else {
-  //     $timeout(function(){
-  //       $state.go('login');
-  //     })
-  //     return $q.reject();
-  //   }
-  // };
-
 }); // End app.config
 
-// EVEN THOUGH LOGGED IN, WON'T REDIRECT TO DASHBOARD (GOES BACK TO LOGIN PAGE)
 app.run(function($rootScope, $state, $location, userDashboardService) {
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
     userDashboardService.getUserData().then(function(response){
-      console.log('loggedIn', response);
-      console.log(toState);
+      // console.log('loggedIn', response);
+      // console.log('toState', toState);
       // console.log("Auth.isLoggedIn", Auth.isLoggedIn)
-      // var shouldLogin = toState.data !== undefined && toState.data.requireLogin && !Auth.isLoggedIn;
       if (toState.url !== '/login' && toState.data.requireLogin && !response.facebookId){
         var shouldLogin = true;
       }
       // NOT authenticated - wants any private stuff
-      console.log("before if");
       if (shouldLogin) {
-        console.log("in if");
         $state.go('login');
         event.preventDefault();
         return;

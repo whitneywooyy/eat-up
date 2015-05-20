@@ -29,7 +29,7 @@ app.service('userDashboardService', function($http, $q){
 				facebookProfilePic: parsedRes.picture.data.url,
 				age: parsedRes.age_range
 			}
-			console.log("Service_newObj", newObj);
+			// console.log("Service_newObj", newObj);
 			dfd.resolve(newObj);
 		});	// End .then
 		return dfd.promise;
