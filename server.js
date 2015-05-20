@@ -34,13 +34,7 @@ mongoose.connection.once('open', function() {
   console.log('Connected to MongoDB at ', mongoUri);
 });
 
-// *** Remove keys and secrets before pushing to Github ***
-// var TWITTER_CONSUMER_KEY = "jhImqkwsWZzwTQPcp8ZWuriTV";
-// var TWITTER_CONSUMER_SECRET = "IiBEorFNAA4J0g5Vyr3VvMvfpLaHt7DtRVIL0Szu6M0CW4FHip";
-var FACEBOOK_APP_ID = "964186640278623";
-var FACEBOOK_APP_SECRET = "2805712524f0d1e61bbec792c4b41766";
-var GOOGLE_CLIENT_ID = "274755072333-k81t8bmpdjesmch2frogfn14j6f982k0.apps.googleusercontent.com";
-var GOOGLE_CLIENT_SECRET = "aBV8a1c8VJM2RVcg8O-m7zl3";
+
 
 // MIDDLEWARE
 // app.use(morgan('dev'));
