@@ -8,13 +8,12 @@
 	<header>
 		<nav>
 			<ul>
+				<li><a href="/auth/facebook" title="Facebook Login">Login/Register with Facebook</a></li>
+				<li><a ui-sref="userProfile" title="Your Profile">Your Profile</a></li>
+				<li><a ui-sref="userProfile.userDashboard" title="Dashboard">Dashboard</a></li>
+				<li><a ui-sref="userProfile.messages" title="Your Messages">Your Messages</a></li>
 				<li><a ui-sref="browseRestaurants" title="Browse Restaurants">Browse Restaurants</a></li>
 				<li><a ui-sref="browseUsers" title="Browse Users">Browse Users</a></li>
-				<li><a ui-sref="register" title="Register">Register</a></li>
-				<li><a ui-sref="userProfile" title="Your Profile">Your Profile</a></li>
-				<li><a ui-sref="userProfile.messages" title="Your Messages">Your Messages</a></li>
-				<li><a ui-sref="userProfile.userDashboard" title="Dashboard">Dashboard</a></li>
-				<li><a href="/auth/facebook" title="Facebook Login">Login with Facebook</a></li>
 				<li><a href="/logout" title="logout">Logout</a></li>
 				<!-- <li><a href="/api/test" title="test">Test</a></li> -->
 			</ul>
@@ -41,6 +40,7 @@
 	<script type="text/javascript" src="js/controllers/userProfileCtrl.js"></script>
 	<script type="text/javascript" src="js/controllers/homeCtrl.js"></script>
 	<script type="text/javascript" src="js/services/userDashboardService.js"></script>
+	<script type="text/javascript" src="js/services/authFactory.js"></script>
 	<script type="text/javascript" src=""></script>
 </body>
 </html>

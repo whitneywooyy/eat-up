@@ -16,11 +16,11 @@ app.config(function($stateProvider, $urlRouterProvider){
     templateUrl: "../templates/loginTmpl.html",
     controller: "loginCtrl"
   })
-  .state('register', {
-    url: "/register",
-    templateUrl: "../templates/registerTmpl.html",
-    controller: "registerCtrl"
-  })
+  // .state('register', {
+  //   url: "/register",
+  //   templateUrl: "../templates/registerTmpl.html",
+  //   controller: "registerCtrl"
+  // })
   .state('userProfile', {
     url: "/username", // custom :username as url??
     templateUrl: "../templates/userProfileTmpl.html", // Each page only shows what's on this html page...
@@ -29,10 +29,13 @@ app.config(function($stateProvider, $urlRouterProvider){
   .state('userProfile.userDashboard', {
     url: "/dashboard",
     templateUrl: "../templates/userProfileTmpl.userDashboard.html",
-    controller: "userDashboardCtrl"
+    controller: "userDashboardCtrl",
     // resolve: {
-      
+    //   authenticate: authenticate  
     // }
+    data: {
+      requireLogin: true
+    }
   })
   .state('browseUsers', {
     url: "/browse-users",
@@ -44,13 +47,12 @@ app.config(function($stateProvider, $urlRouterProvider){
     templateUrl: "../templates/browseRestaurantsTmpl.html",
     controller: "browseRestaurantsCtrl"
   })
-  .state('userProfile.messages', {
+  .state('userProfile.userDashboard.messages', {
     url: "/messages",
     templateUrl: "../templates/userProfileTmpl.messages.html",
     controller: "messagesCtrl"
-    // Need resolve?
   })
-  .state('userProfile.messages.singleMessage', {
+  .state('userProfile.userDashboard.messages.singleMessage', {
     url: "/:messageId",
     templateUrl: "../templates/userProfileTmpl.messages.singleMessage.html",
     controller: "singleMessageCtrl"
@@ -74,4 +76,39 @@ app.config(function($stateProvider, $urlRouterProvider){
   //   templateUrl: "../templates/forumThreadTmpl.html",
   //   controller: "forumThreadCtrl"
   // })
-})
+
+  // var authenticate = function($q, user, $state, $timeout){
+  //   if (user.isAuthenticated()){
+  //     return $q.when();
+  //   } else {
+  //     $timeout(function(){
+  //       $state.go('login');
+  //     })
+  //     return $q.reject();
+  //   }
+  // };
+
+}); // End app.config
+
+// EVEN THOUGH LOGGED IN, WON'T REDIRECT TO DASHBOARD (GOES BACK TO LOGIN PAGE)
+app.run(function($rootScope, $state, $location, userDashboardService) {
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
+    userDashboardService.getUserData().then(function(response){
+      console.log('loggedIn', response);
+      console.log(toState);
+      // console.log("Auth.isLoggedIn", Auth.isLoggedIn)
+      // var shouldLogin = toState.data !== undefined && toState.data.requireLogin && !Auth.isLoggedIn;
+      if (toState.url !== '/login' && toState.data.requireLogin && !response.facebookId){
+        var shouldLogin = true;
+      }
+      // NOT authenticated - wants any private stuff
+      console.log("before if");
+      if (shouldLogin) {
+        console.log("in if");
+        $state.go('login');
+        event.preventDefault();
+        return;
+      }
+    });
+  });
+}); // End app.run

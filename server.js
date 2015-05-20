@@ -1,3 +1,5 @@
+
+
 // DEPENDENCIES
 var express = require('express');
 var mongoose = require('mongoose');
@@ -11,9 +13,9 @@ var cors = require('cors');
 
 var local = require('passport-local');
 var override = require('method-override');
-// var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// var TwitterStrategy = require('passport-twitter').Strategy;
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // CONTROLLERS
 var UserCtrl = require('./lib/controllers/UserCtrl');
@@ -34,8 +36,6 @@ mongoose.connection.once('open', function() {
   console.log('Connected to MongoDB at ', mongoUri);
 });
 
-
-
 // MIDDLEWARE
 // app.use(morgan('dev'));
 app.use(cookie());
@@ -48,8 +48,6 @@ app.use(passport.session());
 // app.use(flash());
 app.use(express.static(__dirname + '/public'));
 app.use(cors());
-
-// require('./lib/passport.js')(passport);
 
 // requireAuth handles multiple login entrypoints
 var requireAuth = function(req, res, next) {
@@ -71,18 +69,6 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
-// passport.use(new TwitterStrategy({
-// 	// Eat Up App - dev.twitter.com/apps
-//   consumerKey: TWITTER_CONSUMER_KEY,
-//   consumerSecret: TWITTER_CONSUMER_SECRET,
-//   callbackURL: 'http://localhost:' + port + '/auth/twitter/callback'
-// }, function(token, tokenSecret, profile, done) {
-//   // console.log('some kind of test', token);
-//   process.nextTick(function(){
-//   	return done(null, profile);
-//   })
-// }));
-
 passport.use(new FacebookStrategy({
 	// Eat Up App - Facebook Developers
     clientID: FACEBOOK_APP_ID,
@@ -90,10 +76,6 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://localhost:" + port + "/auth/facebook/callback",
     profileFields: ['id', 'age_range', 'email', 'gender', 'first_name', 'last_name', 'location', 'picture']
   }, function(accessToken, refreshToken, profile, done) {
-    // process.nextTick(function () {
-    // 	console.log("profile", profile);
-    //   return done(null, profile);
-    // });
 	console.log("profile", profile);
 		User.findOne({
 			'facebook.id': profile.id 
@@ -101,7 +83,6 @@ passport.use(new FacebookStrategy({
 	        if (err) {
 	            return done(err);
 	        }
-	        //No user was found... so create a new user with values from Facebook (all the profile. stuff)
 	        if (!user) {
 	            user = new User({
 	            	facebookId: profile.id,
@@ -121,23 +102,11 @@ passport.use(new FacebookStrategy({
 	                return done(err, user);
 	            });
 	        } else {
-	            //found user. Return
 	            return done(err, user);
 	        }
 		})
 		return done(null, profile);
 }));
-// passport.use(new GoogleStrategy({
-// 	// Eat Up App - Google Developers Console
-//     clientID: GOOGLE_CLIENT_ID,
-//     clientSecret: GOOGLE_CLIENT_SECRET,
-//     callbackURL: "http://localhost:" + port + "/auth/google/callback"
-//   }, function(accessToken, refreshToken, profile, done) {
-//     process.nextTick(function () {
-//       return done(null, profile);
-//     });
-//   }
-// ));
 
 // ENDPOINTS
 	// app.get('/api/test', requireAuth, function(req, res) {
@@ -151,16 +120,10 @@ passport.use(new FacebookStrategy({
 	// In Dashboard Angular Service, call $http /api/dashboard to retrieve this data
 	app.get('/api/dashboard', requireAuth, function(req, res) {
 		console.log('req on req', req.user);
-	  return res.send({
-	  	user: req.user
-	  });
+		return res.send({
+			user: req.user
+		});
 	});
-	// app.get('/', function(req, res){
-	// 	res.render('home');
-	// });
-	// app.get('/login', function(req, res){
-	// 	res.render('login');
-	// });
 	app.post('/api/user', UserCtrl.create);
 	app.put('/api/user')
 

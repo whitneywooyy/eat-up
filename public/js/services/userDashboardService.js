@@ -9,7 +9,10 @@ app.service('userDashboardService', function($http, $q){
 			url: '/api/dashboard',
 			data: userObj
 		}).then(function(response){
-			// console.log('response', response);
+			console.log('response', response);
+			if (!response.data.user) {
+				dfd.resolve(false);
+			}
 			var parsedRes = response.data.user._json;
 			// console.log('parsedRes', parsedRes);
 			var newObj = {
