@@ -53,7 +53,7 @@
 	var requireAuth = function(req, res, next) {
 	  // console.log("req", req);	// req.user is undefined but req returns a huge object of data - Twitter, Facebook
 	  if (req.isAuthenticated()) {
-	  	console.log("You're authed", req.user);
+	  	// console.log("You're authed", req.user);
 	    return next();
 	  } else {
 		  console.log('Im redirecting now...');
@@ -91,7 +91,6 @@
 		                gender: profile.gender,
 		                location: profile.location,
 		                facebookProfilePic: profile.photos[0].value,
-		                ageRange: profile._json.age_range,
 		                email: profile.email,
 		                // provider: 'facebook',
 		                //now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
@@ -112,13 +111,25 @@
 
 	// In Dashboard Angular Service, call $http /api/dashboard to retrieve this data
 	app.get('/api/dashboard', requireAuth, function(req, res) {
-		console.log('req on req', req.user);
+		// console.log('req on req', req.user);
 		return res.send({
 			user: req.user
 		});
 	});
 	app.post('/api/user', UserCtrl.create);
-	app.put('/api/user')
+
+	app.put('/api/user/name', function(req, res){
+		// var id = req.params.id;
+		console.log('req.body', req.body);
+		console.log('req.user!!!', req.user);
+		User.findOneAndUpdate({ facebookId: '10155541755040543' }, { firstName: req.body.firstName, lastName: req.body.lastName }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update name", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
+	});
 
 	// SOCIAL OAUTH
 	app.get('/auth/facebook', passport.authenticate('facebook'));
