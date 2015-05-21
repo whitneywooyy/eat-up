@@ -108,14 +108,21 @@
 	}));
 
 // ENDPOINTS
-
-	// In Dashboard Angular Service, call $http /api/dashboard to retrieve this data
+	app.get('/api/public-profile/:username', function(req, res){
+		var username = req.params.username;
+		// console.log('username', username);
+		User.findOne({ username: username }, function(err, user){
+			if (err) {
+				res.send("There was an error");
+			} else {
+				res.json(user);
+				// res.redirect('/user/:username');
+			}
+		});
+	});	// End .get
 	app.get('/api/dashboard', requireAuth, function(req, res) {
-		console.log("Current user ", req.user.id)
+		// console.log("Current user ", req.user.id)
 		// console.log('req on req', req.user);
-		// return res.send({
-		// 	user: req.user
-		// });
 		User.findOne({facebookId: req.user.id}, function(err, user){
 			if (err) {
 				res.send("There was an error");
@@ -124,15 +131,103 @@
 			}
 		})
 	});
-	app.post('/api/user', UserCtrl.create);
+	app.get('/api/public-profile', function(req, res) {
+		// console.log("Current user ", req.user.id)
+		// console.log('req on req', req.user);
+		User.findOne({facebookId: req.user.id}, function(err, user){
+			if (err) {
+				res.send("There was an error");
+			} else {
+				res.json(user);
+			}
+		})
+	});
+	// app.post('/api/user', UserCtrl.create);
 
+	// EDIT USER PROFILE ENDPOINTS
 	app.put('/api/user/name', function(req, res){
-		// var id = req.params.id;
 		console.log('req.body', req.body);
 		console.log('req.user!!!', req.user);
 		User.findOneAndUpdate({ facebookId: req.user.id }, { firstName: req.body.firstName, lastName: req.body.lastName }, { new: true }, function(err, user) {
 			if (err) {
 				console.log("can't update name", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
+	});
+	app.put('/api/user/email', function(req, res){
+		console.log('req.body', req.body);
+		console.log('req.user-email!', req.user);
+		User.findOneAndUpdate({ facebookId: req.user.id }, { email: req.body.email }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update email", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
+	});
+	app.put('/api/user/username', function(req, res){
+		console.log('req.body', req.body);
+		console.log('req.user-username!', req.user);
+		User.findOneAndUpdate({ facebookId: req.user.id }, { username: req.body.username }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update username", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
+	});
+	app.put('/api/user/password', function(req, res){
+		console.log('req.body', req.body);
+		console.log('req.user-password!', req.user);
+		User.findOneAndUpdate({ facebookId: req.user.id }, { password: req.body.password }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update password", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
+	});
+	app.put('/api/user/location', function(req, res){
+		console.log('req.body', req.body);
+		console.log('req.user-location!', req.user);
+		User.findOneAndUpdate({ facebookId: req.user.id }, { location: req.body.location }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update location", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
+	});
+	app.put('/api/user/gender', function(req, res){
+		console.log('req.body', req.body);
+		console.log('req.user-gender!', req.user);
+		User.findOneAndUpdate({ facebookId: req.user.id }, { gender: req.body.gender }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update gender", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
+	});
+	app.put('/api/user/birthday', function(req, res){
+		console.log('req.body', req.body);
+		console.log('req.user-birthday!', req.user);
+		User.findOneAndUpdate({ facebookId: req.user.id }, { birthday: req.body.birthday }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update birthday", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
+	});
+	app.put('/api/user/bio', function(req, res){
+		console.log('req.body', req.body);
+		console.log('req.user-bio!', req.user);
+		User.findOneAndUpdate({ facebookId: req.user.id }, { bio: req.body.bio }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update bio", err);
 			}
 			console.log('user', user);
 			return res.json(user);

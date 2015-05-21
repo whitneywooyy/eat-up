@@ -11,7 +11,7 @@
 				<li><a href="/auth/facebook" title="Facebook Login">Login/Register with Facebook</a></li>
 				<li><a ui-sref="userProfile" title="Your Profile">Your Profile</a></li>
 				<li><a ui-sref="userProfile.userDashboard" title="Dashboard">Dashboard</a></li>
-				<li><a ui-sref="userProfile.userDashboard.messages" title="Your Messages">Your Messages</a></li>
+				<!-- <li><a ui-sref="userProfile.userDashboard.messages" title="Your Messages">Your Messages</a></li> -->
 				<li><a ui-sref="browseRestaurants" title="Browse Restaurants">Browse Restaurants</a></li>
 				<li><a ui-sref="browseUsers" title="Browse Users">Browse Users</a></li>
 				<li><a href="/logout" title="logout">Logout</a></li>
@@ -19,7 +19,7 @@
 			</ul>
 		</nav>
 	</header>
-	<input type="text" ng-model="another" /> {{another}}
+	<!-- <input type="text" ng-model="another" /> {{another}} -->
 	<hr>
 	<div ui-view></div>
 
@@ -43,6 +43,7 @@
 	<script type="text/javascript" src="js/services/userDashboardService.js"></script>
 	<script type="text/javascript" src="js/services/authFactory.js"></script>
 	<script type="text/javascript" src="js/services/editProfileService.js"></script>
+	<script type="text/javascript" src="js/services/userProfileService.js"></script>
 	<script type="text/javascript" src=""></script>
 </body>
 </html>

@@ -1,21 +1,19 @@
-<p>Name</p> {{showUserData.firstName}} {{showUserData.lastName}} <a ui-sref="userProfile.userDashboard.editProfile.name">Edit</a>
-<div ui-view></div>
+<p>Name</p> {{showUserData.firstName}} {{showUserData.lastName}} <a ui-sref="userProfile.name">Edit</a>
 <hr>
-<p>Email</p> {{showUserData.email}} <a ui-sref="userProfile.userDashboard.editProfile.email">Edit</a>
-
-<p>Username</p> {{showUserData.username}} <a ui-sref="userProfile.userDashboard.editProfile.username">Edit</a>
-
-<p>Password</p> {{}} <a ui-sref="userProfile.userDashboard.editProfile.password">Edit</a>
-
-<p>Location</p> {{showUserData.location}} <a ui-sref="userProfile.userDashboard.editProfile.location">Edit</a>
-
-<p>Gender</p> {{showUserData.gender}} <a ui-sref="userProfile.userDashboard.editProfile.gender">Edit</a>
-
-<p>Age</p> {{showUserData.age}} <a ui-sref="userProfile.userDashboard.editProfile.birthday">Edit</a>
-
-<p>Bio</p> {{}} <a ui-sref="userProfile.userDashboard.editProfile.bio">Edit</a>
-
-
+<p>Email</p> {{showUserData.email}} <a ui-sref="userProfile.email">Edit</a>
+<hr>
+<p>Username</p> {{showUserData.username}} <a ui-sref="userProfile.username">Edit</a>
+<hr>
+<p>Password</p> {{showUserData.password}} <a ui-sref="userProfile.password">Edit</a>
+<hr>
+<p>Location</p> {{showUserData.location}} <a ui-sref="userProfile.location">Edit</a>
+<hr>
+<p>Gender</p> {{showUserData.gender}} <a ui-sref="userProfile.gender">Edit</a>
+<hr>
+<p>Birthday</p> {{showUserData.birthday}} <a ui-sref="userProfile.birthday">Edit</a>
+<hr>
+<p>Bio</p> {{showUserData.bio}} <a ui-sref="userProfile.bio">Edit</a>
+<hr>
 
 <h3>Tell us your favorite foods and level of foodie-ism and in turn, we'll match you up with similar foodies and suggest restaurants around {{showUserData.location}}.</h3>
 <h2>Cuisines</h2>
@@ -108,6 +106,7 @@
 	<li>Rices</li>
 	<li>Deep-fried</li>
 	<li>Sausages</li>
+	<li>Cheeses</li>
 	<li>Meats</li>
 	<li>Fish</li>
 	<li>Desserts</li>

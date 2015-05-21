@@ -1,15 +1,15 @@
 var app = angular.module('eatUp');
 
-app.service('userDashboardService', function($http, $q){
+app.service('userProfileService', function($http, $q){
 	this.getUserData = function(userObj){
 		var dfd = $q.defer();
-		// console.log("userObj", userObj);
+		console.log("userObj", userObj);
 		$http({
 			method: "GET",
-			url: '/api/dashboard',
+			url: '/api/public-profile/:username',
 			data: userObj
 		}).then(function(response){
-			// console.log('response434', response);
+			console.log('response434', response);
 			if (!response.data) {
 				dfd.resolve(false);
 			}
