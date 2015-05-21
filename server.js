@@ -96,12 +96,12 @@
 		                //now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
 		                facebook: profile._json
 		            });
-		            user.save(function(err) {
+		            user.save(function(err, user) {
 		                if (err) console.log(err);
-		                return done(err, user);
+		                return done(err);
 		            });
 		        } else {
-		            return done(err, user);
+		            return done(null, user);
 		        }
 			})
 		return done(null, profile);
@@ -111,10 +111,18 @@
 
 	// In Dashboard Angular Service, call $http /api/dashboard to retrieve this data
 	app.get('/api/dashboard', requireAuth, function(req, res) {
+		console.log("Current user ", req.user.id)
 		// console.log('req on req', req.user);
-		return res.send({
-			user: req.user
-		});
+		// return res.send({
+		// 	user: req.user
+		// });
+		User.findOne({facebookId: req.user.id}, function(err, user){
+			if (err) {
+				res.send("There was an error");
+			} else {
+				res.json(user);
+			}
+		})
 	});
 	app.post('/api/user', UserCtrl.create);
 
@@ -122,7 +130,7 @@
 		// var id = req.params.id;
 		console.log('req.body', req.body);
 		console.log('req.user!!!', req.user);
-		User.findOneAndUpdate({ facebookId: '10155541755040543' }, { firstName: req.body.firstName, lastName: req.body.lastName }, { new: true }, function(err, user) {
+		User.findOneAndUpdate({ facebookId: req.user.id }, { firstName: req.body.firstName, lastName: req.body.lastName }, { new: true }, function(err, user) {
 			if (err) {
 				console.log("can't update name", err);
 			}

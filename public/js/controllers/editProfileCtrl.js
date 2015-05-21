@@ -1,25 +1,19 @@
 var app = angular.module('eatUp');
 
-app.controller('editProfileCtrl', function($scope, userDashboardService, $state, $http){
-	userDashboardService.getUserData().then(function(result){
-		console.log('Ctrl_result', result);
-		$scope.showUserData = result;
-	});
+app.controller('editProfileCtrl', function($scope, userDashboardService, editProfileService, $http){
+	$scope.getUserData = function(){
+		userDashboardService.getUserData().then(function(result){
+			console.log('Ctrl_result', result);
+			$scope.showUserData = result;
+		});
+	};
 
-	$scope.update = function(firstName, lastName){
-		console.log($scope.firstName, $scope.lastName);
-		$http({
-			method: "put",
-			url: '/api/user/name',
-			data: {
-				firstName: firstName,
-				lastName: lastName
-			}
-		}).then(function(response){
-			// refresh();
-			console.log('response!!!@!', response.data);
-			$scope.showUserData = response.data;	// View not updating with new user info
-		})
-	};	// End .update
+	$scope.updateName = function(first, last){
+		editProfileService.updateName(first, last)
+		.then(function(result){
+			console.log('Ctrl_result2', result);
+			$scope.getUserData();
+		});
+	};	// End .updateName
 
 });	// End app.controller
