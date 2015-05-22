@@ -18,12 +18,20 @@ app.config(function($stateProvider, $urlRouterProvider){
   })
   // PUBLIC PROFILE
   .state('userProfile', {
-    url: "/username", // custom :username as url??
+    url: "/user" + "/:username", // custom :username as url??
     templateUrl: "../templates/userProfileTmpl.html",
-    controller: "userProfileCtrl"
+    controller: "userProfileCtrl",
+    resolve: {
+      userRef: function(userProfileService, $stateParams){
+        console.log("userRef resolve firing");
+        console.log('$stateParams', $stateParams);
+        console.log('$stateParams.username', $stateParams.username);
+        return userProfileService.userPublicData($stateParams.username);
+      }
+    }
   })
   // DASHBOARD
-  .state('userProfile.userDashboard', {
+  .state('userDashboard', {
     url: "/dashboard",
     templateUrl: "../templates/userDashboardTmpl.html",
     controller: "userDashboardCtrl",
@@ -32,7 +40,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     }
   })
   // EDIT USER INFORMATION
-  .state('userProfile.userDashboard.editProfile', {
+  .state('userDashboard.editProfile', {
     url: "/edit-profile",
     templateUrl: "../templates/editProfileTmpl.html",
     controller: "userDashboardCtrl",

@@ -108,13 +108,14 @@
 	}));
 
 // ENDPOINTS
-	app.get('/api/public-profile/:username', function(req, res){
+	app.get('/api/pub/:username', function(req, res){
 		var username = req.params.username;
 		// console.log('username', username);
 		User.findOne({ username: username }, function(err, user){
 			if (err) {
 				res.send("There was an error");
 			} else {
+				console.log("TEST");
 				res.json(user);
 				// res.redirect('/user/:username');
 			}

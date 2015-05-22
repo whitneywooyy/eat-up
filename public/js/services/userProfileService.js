@@ -1,15 +1,15 @@
 var app = angular.module('eatUp');
 
 app.service('userProfileService', function($http, $q){
-	this.getUserData = function(userObj){
+	this.userPublicData = function(username){
 		var dfd = $q.defer();
-		console.log("userObj", userObj);
+		console.log("username", username);
 		$http({
 			method: "GET",
-			url: '/api/public-profile/:username',
-			data: userObj
-		}).then(function(response){
-			console.log('response434', response);
+			url: '/api/pub/' + username
+		})
+		.then(function(response){
+			console.log('response!!!!', response.data);
 			if (!response.data) {
 				dfd.resolve(false);
 			}
@@ -18,6 +18,6 @@ app.service('userProfileService', function($http, $q){
 			}
 		});	// End .then
 		return dfd.promise;
-	};	// End .getUserData
+	};	// End .userPublicData
 	
 });	// End app.controller

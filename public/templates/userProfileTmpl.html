@@ -1,3 +1,7 @@
-<h3>Your Profile</h3>
-<h1>{{showUserData.firstName}} {{showUserData.lastName}}</h1>
+<h1>{{userData.username}} a.k.a. {{userData.firstName}}</h1>
+<p>Living in {{userData.location}}</p>
+<p>"{{ userData.bio }}"</p>
+
+<img src="{{userData.facebookProfilePic}}" />
+<h3>{{userData.firstName}}'s Favorite Foods</h3>
 <div ui-view></div>
