@@ -130,5 +130,21 @@ app.service('editProfileService', function($http, $q){
 		})
 		return dfd.promise;
 	};	// End .updateBio
+
+	this.updateFoods = function(foodsArr){
+		console.log(foodsArr);
+		var dfd = $q.defer();
+		$http({
+			method: "put",
+			url: '/api/user/foods',
+			data: {
+				foods: foodsArr
+			}
+		}).then(function(response){
+			console.log('response!!!@!', response);
+			return dfd.resolve(response.data);
+		})
+		return dfd.promise;
+	};	// End .updateFoods
 	
 });	// End app.service

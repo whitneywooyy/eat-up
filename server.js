@@ -22,6 +22,7 @@
 
 // MODELS
 	var User = require('./lib/models/User');
+	var Foods = require('./lib/models/Foods');
 
 // EXPRESS
 	var app = express();
@@ -143,7 +144,6 @@
 			}
 		})
 	});
-	// app.post('/api/user', UserCtrl.create);
 
 	// EDIT USER PROFILE ENDPOINTS
 	app.put('/api/user/name', function(req, res){
@@ -233,6 +233,17 @@
 			console.log('user', user);
 			return res.json(user);
 		});
+	});
+	app.put('/api/user/foods', function(req, res){
+		console.log('req.body', req.body);
+		console.log('req.user-bio!', req.user);
+		// User.findOneAndUpdate({ facebookId: req.user.id }, { bio: req.body.bio }, { new: true }, function(err, user) {
+		// 	if (err) {
+		// 		console.log("can't update bio", err);
+		// 	}
+		// 	console.log('user', user);
+		// 	return res.json(user);
+		// });
 	});
 
 	// SOCIAL OAUTH

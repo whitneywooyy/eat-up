@@ -18,7 +18,7 @@ app.config(function($stateProvider, $urlRouterProvider){
   })
   // PUBLIC PROFILE
   .state('userProfile', {
-    url: "/user" + "/:username", // custom :username as url??
+    url: "/user" + "/:username",
     templateUrl: "../templates/userProfileTmpl.html",
     controller: "userProfileCtrl",
     resolve: {
@@ -40,7 +40,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     }
   })
   // EDIT USER INFORMATION
-  .state('userDashboard.editProfile', {
+  .state('editProfile', {
     url: "/edit-profile",
     templateUrl: "../templates/editProfileTmpl.html",
     controller: "userDashboardCtrl",
@@ -48,44 +48,49 @@ app.config(function($stateProvider, $urlRouterProvider){
       requireLogin: true
     }
   })
-  .state('userProfile.name', {
-    url: "/name",
+  .state('name', {
+    url: "/edit-profile/name",
     templateUrl: "../templates/profileSettings/Tmpl.name.html",
     controller: "editProfileCtrl"
   })
-  .state('userProfile.username', {
-    url: "/username",
+  .state('username', {
+    url: "/edit-profile/username",
     templateUrl: "../templates/profileSettings/Tmpl.username.html",
     controller: "editProfileCtrl"
   })
-  .state('userProfile.email', {
-    url: "/email",
+  .state('email', {
+    url: "/edit-profile/email",
     templateUrl: "../templates/profileSettings/Tmpl.email.html",
     controller: "editProfileCtrl"
   })
-  .state('userProfile.password', {
-    url: "/password",
+  .state('password', {
+    url: "/edit-profile/password",
     templateUrl: "../templates/profileSettings/Tmpl.password.html",
     controller: "editProfileCtrl"
   })
-  .state('userProfile.location', {
-    url: "/location",
+  .state('location', {
+    url: "/edit-profile/location",
     templateUrl: "../templates/profileSettings/Tmpl.location.html",
     controller: "editProfileCtrl"
   })
-  .state('userProfile.gender', {
-    url: "/gender",
+  .state('gender', {
+    url: "/edit-profile/gender",
     templateUrl: "../templates/profileSettings/Tmpl.gender.html",
     controller: "editProfileCtrl"
   })
-  .state('userProfile.birthday', {
-    url: "/birthday",
+  .state('birthday', {
+    url: "/edit-profile/birthday",
     templateUrl: "../templates/profileSettings/Tmpl.birthday.html",
     controller: "editProfileCtrl"
   })
-  .state('userProfile.bio', {
-    url: "/bio",
+  .state('bio', {
+    url: "/edit-profile/bio",
     templateUrl: "../templates/profileSettings/Tmpl.bio.html",
+    controller: "editProfileCtrl"
+  })
+  .state('foods', {
+    url: "/edit-profile/foods",
+    templateUrl: "../templates/profileSettings/Tmpl.foods.html",
     controller: "editProfileCtrl"
   })
   // BROWSE SITE

@@ -15,7 +15,7 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 				console.log('Ctrl_result', result);
 				$scope.showUserData = result;
 			});
-			$location.path('/username/dashboard/edit-profile');
+			$location.path('/edit-profile');
 		});
 	};	// End .updateName
 
@@ -102,5 +102,18 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 			$location.path('/username/dashboard/edit-profile');
 		});
 	};	// End .updateBio
+
+	// $scope.updateFoods = function(foodsArr){
+	// 	console.log('foodsArr', foodsArr);
+	// 	// editProfileService.updateFoods(foodsArr)
+	// 	// .then(function(result){
+	// 	// 	console.log('Ctrl_result2', result);
+	// 	// 	userDashboardService.getUserData().then(function(result){
+	// 	// 		console.log('Ctrl_result', result);
+	// 	// 		$scope.showUserData = result;
+	// 	// 	});
+	// 	// 	$location.path('/username/dashboard/edit-profile');
+	// 	// });
+	// };	// End .updateBio
 
 });	// End app.controller
