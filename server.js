@@ -109,6 +109,15 @@
 	}));
 
 // ENDPOINTS
+	app.post('/api/new-user'), function(req, res){
+		console.log('req.body', req.body);
+		User.create(req.body, function(err, response){
+			console.log(err);
+		if (err) res.status(500).json(err);
+		else res.json(response);
+		});
+	};
+
 	app.get('/api/pub/:username', function(req, res){
 		var username = req.params.username;
 		// console.log('username', username);
