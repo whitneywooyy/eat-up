@@ -7,4 +7,9 @@ app.controller('userDashboardCtrl', function($scope, userDashboardService, $stat
 		$scope.showUserData = result;
 	});
 
+	userDashboardService.suggestedUsers().then(function(result){
+		console.log('Ctrl_result', result);
+		$scope.suggestedUsers = result;
+	});
+
 });	// End app.controller

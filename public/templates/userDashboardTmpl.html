@@ -1,4 +1,14 @@
-<h1>Your Dashboard</h1>	
-<h2> Welcome back, {{ showUserData.firstName }}!</h2>
-<a ui-sref="editProfile">Edit Profile</a>
-<div ui-view></div>
+<div class="row header">
+	<h1>Your Dashboard</h1>
+</div>
+<div class="row">
+	<h2>Welcome back, {{ showUserData.firstName }}!</h2>
+	<a ui-sref="editProfile">Edit Profile</a>
+	<div ui-view></div>
+</div>
+
+
+<div class="row">
+	<h2>Suggested Foodie Matches</h2>
+	{{suggestedUsers}}
+</div>

@@ -116,7 +116,7 @@
 			if (err) {
 				res.send("There was an error");
 			} else {
-				console.log("TEST");
+				// console.log("TEST");
 				res.json(user);
 				// res.redirect('/user/:username');
 			}
@@ -143,6 +143,20 @@
 				res.json(user);
 			}
 		})
+	});
+	app.get('/api/suggested-users', function(req, res) {
+		User.find({}, function(err, users) {
+			if (err) {
+				res.send("There was an error");	
+			} else {
+				console.log('finding all users', users)
+				var userMap = {};
+				users.forEach(function(user){
+					userMap[user._id] = user;
+				});
+				res.json(userMap);
+			}
+		});
 	});
 
 	// EDIT USER PROFILE ENDPOINTS
