@@ -27,7 +27,7 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 				console.log('Ctrl_result', result);
 				$scope.showUserData = result;
 			});
-			$location.path('/username/dashboard/edit-profile');
+			$location.path('/edit-profile');
 		});
 	};	// End .updateEmail
 
@@ -39,7 +39,7 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 				console.log('Ctrl_result', result);
 				$scope.showUserData = result;
 			});
-			$location.path('/username/dashboard/edit-profile');
+			$location.path('/edit-profile');
 		});
 	};	// End .updateUsername
 
@@ -51,7 +51,7 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 				console.log('Ctrl_result', result);
 				$scope.showUserData = result;
 			});
-			$location.path('/username/dashboard/edit-profile');
+			$location.path('/edit-profile');
 		});
 	};	// End .updatePassword
 
@@ -63,7 +63,7 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 				console.log('Ctrl_result', result);
 				$scope.showUserData = result;
 			});
-			$location.path('/username/dashboard/edit-profile');
+			$location.path('/edit-profile');
 		});
 	};	// End .updateLocation
 
@@ -75,7 +75,7 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 				console.log('Ctrl_result', result);
 				$scope.showUserData = result;
 			});
-			$location.path('/username/dashboard/edit-profile');
+			$location.path('/edit-profile');
 		});
 	};	// End .updateGender
 
@@ -87,7 +87,7 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 				console.log('Ctrl_result', result);
 				$scope.showUserData = result;
 			});
-			$location.path('/username/dashboard/edit-profile');
+			$location.path('/edit-profile');
 		});
 	};	// End .updateBirthday
 
@@ -99,21 +99,21 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 				console.log('Ctrl_result', result);
 				$scope.showUserData = result;
 			});
-			$location.path('/username/dashboard/edit-profile');
+			$location.path('/edit-profile');
 		});
 	};	// End .updateBio
 
-	// $scope.updateFoods = function(foodsArr){
-	// 	console.log('foodsArr', foodsArr);
-	// 	// editProfileService.updateFoods(foodsArr)
-	// 	// .then(function(result){
-	// 	// 	console.log('Ctrl_result2', result);
-	// 	// 	userDashboardService.getUserData().then(function(result){
-	// 	// 		console.log('Ctrl_result', result);
-	// 	// 		$scope.showUserData = result;
-	// 	// 	});
-	// 	// 	$location.path('/username/dashboard/edit-profile');
-	// 	// });
-	// };	// End .updateBio
+	$scope.updateFoods = function(foodsObj){
+		console.log('foodsObj in CTRL', foodsObj);
+		editProfileService.updateFoods(foodsObj)
+		.then(function(result){
+			console.log('Ctrl_result2', result);
+			userDashboardService.getUserData().then(function(result){
+				console.log('Ctrl_result', result);
+				$scope.showUserData = result;
+			});
+			$location.path('/edit-profile');
+		});
+	};	// End .updateFoods
 
 });	// End app.controller

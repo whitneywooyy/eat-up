@@ -1,23 +1,57 @@
-<p>Name</p> {{showUserData.firstName}} {{showUserData.lastName}} <a ui-sref="name">Edit</a>
-<hr>
-<p>Email</p> {{showUserData.email}} <a ui-sref="email">Edit</a>
-<hr>
-<p>Username</p> {{showUserData.username}} <a ui-sref="username">Edit</a>
-<hr>
-<p>Password</p> {{showUserData.password}} <a ui-sref="password">Edit</a>
-<hr>
-<p>Location</p> {{showUserData.location}} <a ui-sref="location">Edit</a>
-<hr>
-<p>Gender</p> {{showUserData.gender}} <a ui-sref="gender">Edit</a>
-<hr>
-<p>Birthday</p> {{showUserData.birthday}} <a ui-sref="birthday">Edit</a>
-<hr>
-<p>Bio</p> {{showUserData.bio}} <a ui-sref="bio">Edit</a>
-<hr>
-<p>Favorite Cuisines</p> <!-- {{showUserData.foods}} --> <a ui-sref="foods">Edit</a>
-<hr>
+<div class="row header">
+	<h2>General</h2>
+</div>
 
-<h2>Your level of foodie-ism</h2>
+<div class="row">
+	<div class="bold col-md-1">Name</div> 
+	<div class="category">{{showUserData.firstName}} {{showUserData.lastName}} <a ui-sref="name">Edit</a></div>
+</div>
+<div class="row">
+	<div class="bold col-md-1">Email</div> 
+	<div class="category">{{showUserData.email}} <a ui-sref="email">Edit</a></div>
+</div>
+<div class="row">
+	<div class="bold col-md-1">Username</div> 
+	<div class="category">{{showUserData.username}} <a ui-sref="username">Edit</a></div>
+</div>
+<div class="row">
+	<div class="bold col-md-1">Password</div> 
+	<div class="category">{{showUserData.password}} <a ui-sref="password">Edit</a></div>
+</div>
+<div class="row">
+	<div class="bold col-md-1">Location</div> 
+	<div class="category">{{showUserData.location}} <a ui-sref="location">Edit</a></div>
+</div>
+<div class="row">
+	<div class="bold col-md-1">Gender</div> 
+	<div class="category">{{showUserData.gender}} <a ui-sref="gender">Edit</a></div>
+</div>
+<div class="row">
+	<div class="bold col-md-1">Birthday</div> 
+	<div class="category">{{showUserData.birthday}} <a ui-sref="birthday">Edit</a></div>
+</div>
+<div class="row">
+	<div class="bold col-md-1">Bio</div> 
+	<div class="category">{{showUserData.bio}} <a ui-sref="bio">Edit</a></div>
+</div>
+
+<div class="row header">
+	<h2>Your Food Interests</h2>
+</div>
+<div class="row">
+	<div class="bold col-md-3">Favorite Cuisines</div>
+	<div class="clearfix"></div>
+		<ul>
+			<li ng-repeat="(cuisine, truthy) in showUserData.foods"> {{cuisine}} </li>
+			<li><a ui-sref="foods">Edit</a></li>
+		</ul>		 
+		
+</div>
+
+<div class="row header">
+	<h2>Your Level of Foodie-ism</h2>
+</div>
+
 <ul>
 	<li>Adventurous - You are super epicurious and are in constant pursuit of indulging in great, authentic, or unique foods from all over the world. You thrive on flavor. And, you'll try literally ANYTHING at least once!</li>
 	<li>Open-minded - You believe in mixing it up and trying new kinds of foods whenever possible. The only foods you won't touch are those containing insects, live animals, or anything else you have been conditioned to be appalled by.</li>

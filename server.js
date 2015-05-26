@@ -237,13 +237,13 @@
 	app.put('/api/user/foods', function(req, res){
 		console.log('req.body', req.body);
 		console.log('req.user-bio!', req.user);
-		// User.findOneAndUpdate({ facebookId: req.user.id }, { bio: req.body.bio }, { new: true }, function(err, user) {
-		// 	if (err) {
-		// 		console.log("can't update bio", err);
-		// 	}
-		// 	console.log('user', user);
-		// 	return res.json(user);
-		// });
+		User.findOneAndUpdate({ facebookId: req.user.id }, { foods: req.body.foods }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update bio", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
 	});
 
 	// SOCIAL OAUTH
@@ -252,7 +252,7 @@
 		failureRedirect: '/#/login' 
 	}), function(req, res) {
 		console.log("req.userData", req.user);
-		res.redirect('/#/username/dashboard');
+		res.redirect('/#/dashboard');
 	});
 
 	// LOGOUT

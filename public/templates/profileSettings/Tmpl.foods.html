@@ -1,10 +1,10 @@
 <h3>Tell us your favorite foods and level of foodie-ism and in turn, we'll match you up with similar foodies and suggest restaurants around {{showUserData.location}}.</h3>
-<form>
+<form ng-model="huh">
 	<label>Korean
-		<input type="checkbox" ng-model="fave.korean" />{{fave.korean}}
+		<input type="checkbox" ng-model="fave.Korean" />{{fave.Korean}}
 	</label><br />
 	<label>Italian
-		<input type="checkbox" ng-model="fave.italian" />{{fave.italian}}
+		<input type="checkbox" ng-model="fave.Italian" />{{fave.Italian}}
 	</label><br />
 	<label>Nepalese
 		<input type="checkbox" ng-model="fave.nepalese" />{{fave.nepalese}}
@@ -229,4 +229,6 @@
 	<li>Fruity</li>
 </ul> -->
 
-<button ng-click="updateFoods()">Save</button>
+<button ng-click="updateFoods(fave)">Save</button>
+
+{{fave}}

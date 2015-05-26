@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html ng-app="eatUp">
+<html lang="en" ng-app="eatUp">
 <head>
-	<title></title>
+	<title>Eat Up!</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
 	<!-- <div ng-controller="userProfileCtrl">{{test}}</div> -->
 	<header>
-		<nav>
-			<ul>
+		<nav class="navbar navbar-right">
+		<a ui-sref="home" class="navbar-brand">Eat Up!</a>
+			<ul class="nav navbar-nav">
 				<li><a href="/auth/facebook" title="Facebook Login">Login/Register with Facebook</a></li>
 				<li><a ui-sref="userProfile." title="Your Profile">Your Profile</a></li>
 				<li><a ui-sref="userDashboard" title="Dashboard">Dashboard</a></li>
@@ -20,8 +27,10 @@
 		</nav>
 	</header>
 	<!-- <input type="text" ng-model="another" /> {{another}} -->
-	<hr>
-	<div ui-view></div>
+	<div class="clearfix"></div>
+	<div class="container">
+		<div ui-view></div>
+	</div>
 
 	<!-- SCRIPTS -->
 	<script type="text/javascript" src="angular.js"></script>

@@ -131,17 +131,17 @@ app.service('editProfileService', function($http, $q){
 		return dfd.promise;
 	};	// End .updateBio
 
-	this.updateFoods = function(foodsArr){
-		console.log(foodsArr);
+	this.updateFoods = function(foodsObj){
+		console.log('foodsObj in SERVICE', foodsObj);
 		var dfd = $q.defer();
 		$http({
 			method: "put",
 			url: '/api/user/foods',
 			data: {
-				foods: foodsArr
+				foods: foodsObj
 			}
 		}).then(function(response){
-			console.log('response!!!@!', response);
+			console.log('foods service response', response);
 			return dfd.resolve(response.data);
 		})
 		return dfd.promise;

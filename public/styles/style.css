@@ -1,0 +1,27 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.main-nav {
+	float: right;
+	margin-right: 20px;
+}
+.main-nav ul li {
+	display: inline;
+	border-right: 1px solid gray;
+	padding: 0 10px;
+}
+.bold {
+	font-weight: bold;
+}
+.category {
+	display: inline;
+}
+.row.header {
+	border-bottom: 1px solid gray;
+	margin-bottom: 20px;
+}
+.inputfield {
+	margin-bottom: 10px;
+}
