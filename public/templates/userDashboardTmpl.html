@@ -10,5 +10,15 @@
 
 <div class="row">
 	<h2>Suggested Foodie Matches</h2>
-	{{suggestedUsers}}
+	<!-- {{suggestedUsers}} -->
+	<div ng-repeat="user in suggestedUsers">
+		{{user.username}} a.k.a. {{user.firstName}}
+		{{user.location}}
+		{{user.gender}}
+		<br />
+		Foods you both like:
+		<ul>
+			<li ng-repeat="cuisine in user.matchedFoods"> {{cuisine}} </li>
+		</ul>	
+	</div>
 </div>

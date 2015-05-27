@@ -55,7 +55,8 @@ app.service('userDashboardService', function($http, $q){
 							location: parsedResponse[key].location,
 							username: parsedResponse[key].username,
 							bio: parsedResponse[key].bio,
-							matchedFoods: parsedResponse[key].foods
+							matchedFoods: parsedResponse[key].foods,
+							numMatched: 0
 						};	
 						if (parsedResponse[key].username !== currentUsername) {
 							var suggUserFaveFoods = parsedResponse[key].foods;
@@ -67,12 +68,15 @@ app.service('userDashboardService', function($http, $q){
 								for (var i = 0; i < suggUserFoodKeys.length; i++){
 									if (currentUserFaveFoods[h] === suggUserFoodKeys[i]) {
 										// console.log("It's a match! ", suggUserFoodKeys[i]);
-										matchedFoodsArr.push(suggUserFoodKeys[i]);
+										var numMatched = matchedFoodsArr.push(suggUserFoodKeys[i]);
 										parsedUserData.matchedFoods = matchedFoodsArr; 
-									}
+										parsedUserData.numMatched = numMatched;
+									} 
 								}
 							}
-							suggUsersArr.push(parsedUserData);
+							if (parsedUserData.numMatched > 0) {
+								suggUsersArr.push(parsedUserData);
+							}
 						}
 					};
 					console.log('suggUsersArr', suggUsersArr);	// Each suggested user's data object will now contain MATCHING favorite foods instead of all favorite foods
