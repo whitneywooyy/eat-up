@@ -21,6 +21,7 @@ app.service('userDashboardService', function($http, $q){
 	};	// End .getUserData
 
 	var currentUsername = undefined;
+	var currentUserFaveFoods = undefined;
 
 	this.suggestedUsers = function(){
 		var dfd = $q.defer();
@@ -39,6 +40,12 @@ app.service('userDashboardService', function($http, $q){
 					method: "GET",
 					url: '/api/dashboard'
 				}).then(function(response){
+					currentUsername = response.data.username;
+					currentUserFaveFoods = response.data.foods;
+					var foodKeys = Object.keys(currentUserFaveFoods);
+					currentUserFaveFoods = foodKeys.sort();
+					// Add in function to capitalize the first letter of each food
+					console.log(currentUsername + "'s favorite foods are", currentUserFaveFoods);
 					for (var key in parsedResponse) {
 						parsedUserData = {
 							facebookProfilePic: parsedResponse[key].facebookProfilePic,
@@ -50,17 +57,12 @@ app.service('userDashboardService', function($http, $q){
 							bio: parsedResponse[key].bio,
 							foods: parsedResponse[key].foods
 						};	
-						currentUsername = response.data.username;
-						console.log('currentUsername1', currentUsername);
-						if (parsedResponse[key].username !== currentUsername) {	// How to 
+						if (parsedResponse[key].username !== currentUsername) {
 							suggUsersArr.push(parsedUserData);
-							console.log(suggUsersArr);
 						}
 					};
-				});
-				// console.log('parsedResponse[key].username', parsedResponse[key].username);
-				// 	console.log('currentUsername2', currentUsername);
-					
+					console.log('suggUsersArr', suggUsersArr);
+				});					
 				return dfd.resolve(suggUsersArr); 
 			}
 		});
