@@ -1,6 +1,6 @@
 var app = angular.module('eatUp');
 
-app.controller('userDashboardCtrl', function($scope, userDashboardService, $state){
+app.controller('userDashboardCtrl', function($scope, userDashboardService){
 
 	userDashboardService.getUserData().then(function(result){
 		// console.log('Ctrl_result', result);

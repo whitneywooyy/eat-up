@@ -1,1 +1,13 @@
-<h1>Some User</h1>
+<h1>Browse Users</h1>
+<div ng-repeat="user in showUserData">
+	<p><a href="/#/user/{{user.username}}">{{user.username}}</a> a.k.a {{user.firstName}}</p>
+	<p>{{user.gender}}</p>
+	<p>{{user.location}}</p>
+	<p><span ng-repeat="(key, val) in user.level">{{val}}</span></p>
+	<p>Favorite Foods:
+	<ul>
+		<li ng-repeat="(food, truthy) in user.foods">{{food}}</li>
+	</ul>
+	</p>
+	<hr>
+</div>
