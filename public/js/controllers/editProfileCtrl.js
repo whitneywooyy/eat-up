@@ -126,4 +126,17 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 		});
 	};	// End .updateFoods
 
+	$scope.updateLevel = function(level){
+		console.log('level in CTRL', level);
+		editProfileService.updateLevel(level)
+		.then(function(result){
+			// console.log('Ctrl_result2', result);
+			userDashboardService.getUserData().then(function(result){
+				console.log('LEVEL Ctrl_result', result);
+				$scope.showUserData = result;
+			});
+			$location.path('/edit-profile');
+		});
+	};	// End .updateLevel
+
 });	// End app.controller

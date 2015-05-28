@@ -27,7 +27,7 @@
 	<label>Japanese
 		<input type="checkbox" ng-model="fave.japanese" />{{fave.japanese}}
 	</label><br />
-	<!-- <label>Ethiopian
+	<label>Ethiopian
 		<input type="checkbox" ng-model="fave.ethiopian" />{{fave.ethiopian}}
 	</label><br />
 	<label>Cuban
@@ -176,7 +176,7 @@
 	</label><br />
 	<label>Seafood
 		<input type="checkbox" ng-model="fave.seafood" />{{fave.seafood}}
-	</label><br /> -->
+	</label><br />
 </form>
 
 <!-- <h3>Interest Level</h3>
@@ -229,6 +229,6 @@
 	<li>Fruity</li>
 </ul> -->
 
-<button ng-click="updateFoods(fave)">Save</button>
-
-{{fave}}
+<div class="clearfix"></div>
+<button class="save" ng-click="updateFoods(fave)">Save</button>
+<button class="cancel" ng-click="cancel()">Cancel</button>

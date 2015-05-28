@@ -93,6 +93,11 @@ app.config(function($stateProvider, $urlRouterProvider){
     templateUrl: "../templates/profileSettings/Tmpl.foods.html",
     controller: "editProfileCtrl"
   })
+  .state('level', {
+    url: "/edit-profile/level",
+    templateUrl: "../templates/profileSettings/Tmpl.level.html",
+    controller: "editProfileCtrl"
+  })
   // BROWSE SITE
   .state('browseUsers', {
     url: "/browse-users",

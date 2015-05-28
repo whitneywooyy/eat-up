@@ -48,15 +48,5 @@
 </div>
 <div class="row">
 	<div class="bold col-md-2">Foodie Level</div>
-	<div class="category">{{showUserData.bio}} <a ui-sref="bio">Edit</a></div>
+	<div class="category" ng-repeat="(type, level) in showUserData.level">You are an <span class="bold">{{level}}</span> eater. <a ui-sref="level">Edit</a></div>
 </div>
-
-<div class="row header">
-	<h2>Your Level of Foodie-ism</h2>
-</div>
-
-<ul>
-	<li>Adventurous - You are super epicurious and are in constant pursuit of indulging in great, authentic, or unique foods from all over the world. You thrive on flavor. And, you'll try literally ANYTHING at least once!</li>
-	<li>Open-minded - You believe in mixing it up and trying new kinds of foods whenever possible. The only foods you won't touch are those containing insects, live animals, or anything else you have been conditioned to be appalled by.</li>
-	<li>Favorite-player - It's not that you're unwilling to try new things, it's that you already have your favorites - the 'tried and true' dishes that never disappoint - and those are what you like to stick with. You also prefer flavors that don't stray too far from what you're used to.</li>
-</ul>

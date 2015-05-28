@@ -152,5 +152,21 @@ app.service('editProfileService', function($http, $q){
 		})
 		return dfd.promise;
 	};	// End .updateFoods
+
+	this.updateLevel = function(level){
+		console.log('level in SERVICE', level);
+		var dfd = $q.defer();
+		$http({
+			method: "put",
+			url: '/api/user/levels',
+			data: {
+				level: level
+			}
+		}).then(function(response){
+			console.log('level service response', response);
+			return dfd.resolve(response.data);
+		})
+		return dfd.promise;
+	};	// End .updateLevel
 	
 });	// End app.service

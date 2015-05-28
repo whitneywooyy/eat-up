@@ -268,6 +268,18 @@
 			return res.json(user);
 		});
 	});
+	app.put('/api/user/levels', function(req, res){
+		console.log('req.body', req.body);
+		console.log('req.user-bio!', req.user);
+		User.findOneAndUpdate({ facebookId: req.user.id }, { level: req.body.level }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update bio", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
+	});
+
 
 	// SOCIAL OAUTH
 	app.get('/auth/facebook', passport.authenticate('facebook'));
