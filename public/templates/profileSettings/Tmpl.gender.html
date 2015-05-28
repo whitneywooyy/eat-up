@@ -1,9 +1,14 @@
-<p>Gender</p>
+<div class="row header">
+	<h2>Change Your Gender</h2>
+</div>
+<h4>From {{showUserData.gender}} to...</h4>
 <select ng-model="gender">
 	<option value="Male">Male</option>
 	<option valuel="Female">Female</option>
 	<option value="Both">Both</option>
 	<option value="Neither">Neither</option>
 </select>
-<!-- <input type="text" placeholder="{{showUserData.gender}}" ng-model="gender" /> -->
-<button ng-click="updateGender(gender)">Save</button>
+<div class="clearfix"></div>
+<br />
+<button class="save" ng-click="updateGender(gender)">Save</button>
+<button class="cancel" ng-click="cancel()">Cancel</button>

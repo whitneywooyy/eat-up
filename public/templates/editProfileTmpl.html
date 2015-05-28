@@ -16,7 +16,7 @@
 </div>
 <div class="row">
 	<div class="bold col-md-1">Password</div> 
-	<div class="category">{{showUserData.password}} <a ui-sref="password">Edit</a></div>
+	<div class="category"><a ui-sref="password">Edit</a></div>
 </div>
 <div class="row">
 	<div class="bold col-md-1">Location</div> 
@@ -45,7 +45,10 @@
 			<li ng-repeat="(cuisine, truthy) in showUserData.foods"> {{cuisine}} </li>
 			<li><a ui-sref="foods">Edit</a></li>
 		</ul>		 
-		
+</div>
+<div class="row">
+	<div class="bold col-md-2">Foodie Level</div>
+	<div class="category">{{showUserData.bio}} <a ui-sref="bio">Edit</a></div>
 </div>
 
 <div class="row header">

@@ -1,3 +1,8 @@
-<p>Email</p> 
-<input type="email" placeholder="{{showUserData.email}}" ng-model="email" />
-<button ng-click="updateEmail(email)">Save</button>
+<div class="row header">
+	<h2>Change Your Email</h2>
+</div>
+<h4>From {{showUserData.email}} to...</h4>
+<input class="inputfield" type="email" placeholder="{{showUserData.email}}" ng-model="email" />
+<div class="clearfix"></div>
+<button class="save" ng-click="updateEmail(email)">Save</button>
+<button class="cancel" ng-click="cancel()">Cancel</button>

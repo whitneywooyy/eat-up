@@ -51,20 +51,26 @@ app.service('editProfileService', function($http, $q){
 		return dfd.promise;
 	};	// End .updateUsername
 
-	this.updatePassword = function(password){
-		console.log(password);
-		var dfd = $q.defer();
-		$http({
-			method: "put",
-			url: '/api/user/password',
-			data: {
-				password: password
-			}
-		}).then(function(response){
-			console.log('response!!!@!', response);
-			return dfd.resolve(response.data);
-		})
-		return dfd.promise;
+	this.updatePassword = function(password, passwordConf){
+		// console.log(password);
+		var matchingPws = undefined;
+		if (password === passwordConf) {
+			matchingPws = password;
+			var dfd = $q.defer();
+			$http({
+				method: "put",
+				url: '/api/user/password',
+				data: {
+					password: matchingPws
+				}
+			}).then(function(response){
+				console.log('response!!!@!', response);
+				return dfd.resolve(response.data);
+			})
+			return dfd.promise;
+		} else {
+			console.log ("Passwords do not match!");
+		}
 	};	// End .updatePassword
 
 	this.updateLocation = function(location){

@@ -1,3 +1,8 @@
-<p>Location</p> 
-<input type="text" placeholder="{{showUserData.location}}" ng-model="location" />
-<button ng-click="updateLocation(location)">Save</button>
+<div class="row header">
+	<h2>Change Your Location</h2>
+</div>
+<h4>From {{showUserData.location}} to...</h4>
+<input class="inputfield" type="text" placeholder="{{showUserData.location}}" ng-model="location" />
+<div class="clearfix"></div>
+<button class="save" ng-click="updateLocation(location)">Save</button>
+<button class="cancel" ng-click="cancel()">Cancel</button>

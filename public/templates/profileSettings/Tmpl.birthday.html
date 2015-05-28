@@ -1,3 +1,8 @@
-<p>Birthday</p> 
-<input type="text" placeholder="{{showUserData.birthday}}" ng-model="birthday" />
-<button ng-click="updateBirthday(birthday)">Save</button>
+<div class="row header">
+	<h2>Change Your Birthday</h2>
+</div>
+<h4>From {{showUserData.birthday}} to...</h4>
+<input class="inputfield" type="text" placeholder="{{showUserData.birthday}}" ng-model="birthday" />
+<div class="clearfix"></div>
+<button class="save" ng-click="updateBirthday(birthday)">Save</button>
+<button class="cancel" ng-click="cancel()">Cancel</button>

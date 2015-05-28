@@ -7,12 +7,16 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 		$scope.showUserData = result;
 	});
 
+	$scope.cancel = function(){
+		$location.path('/edit-profile');
+	};	// End .cancel
+
 	$scope.updateName = function(first, last){
 		editProfileService.updateName(first, last)
 		.then(function(result){
-			console.log('Ctrl_result2', result);
+			// console.log('Ctrl_result2', result);
 			userDashboardService.getUserData().then(function(result){
-				console.log('Ctrl_result', result);
+				console.log('NAME Ctrl_result', result);
 				$scope.showUserData = result;
 			});
 			$location.path('/edit-profile');
@@ -22,9 +26,9 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 	$scope.updateEmail = function(email){
 		editProfileService.updateEmail(email)
 		.then(function(result){
-			console.log('Ctrl_result2', result);
+			// console.log('Ctrl_result2', result);
 			userDashboardService.getUserData().then(function(result){
-				console.log('Ctrl_result', result);
+				console.log('EMAIL Ctrl_result', result);
 				$scope.showUserData = result;
 			});
 			$location.path('/edit-profile');
@@ -34,22 +38,28 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 	$scope.updateUsername = function(username){
 		editProfileService.updateUsername(username)
 		.then(function(result){
-			console.log('Ctrl_result2', result);
+			// console.log('Ctrl_result2', result);
 			userDashboardService.getUserData().then(function(result){
-				console.log('Ctrl_result', result);
+				console.log('USERNAME Ctrl_result', result);
 				$scope.showUserData = result;
 			});
 			$location.path('/edit-profile');
 		});
 	};	// End .updateUsername
 
-	$scope.updatePassword = function(password){
-		editProfileService.updatePassword(password)
+	$scope.updatePassword = function(password, passwordConf){
+		editProfileService.updatePassword(password, passwordConf)
 		.then(function(result){
-			console.log('Ctrl_result2', result);
+			// console.log('Ctrl_result2', result);
 			userDashboardService.getUserData().then(function(result){
-				console.log('Ctrl_result', result);
+				console.log('PW Ctrl_result', result);
 				$scope.showUserData = result;
+				var pw = result.password;
+				$scope.pw = pw;
+				console.log('password', $scope.pw);
+				var hiddenPw = pw.replace(/[^~,]/g, "*");
+				$scope.hiddenPw = hiddenPw;
+				console.log('$scope.hiddenPw', $scope.hiddenPw);
 			});
 			$location.path('/edit-profile');
 		});
@@ -58,9 +68,9 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 	$scope.updateLocation = function(location){
 		editProfileService.updateLocation(location)
 		.then(function(result){
-			console.log('Ctrl_result2', result);
+			// console.log('Ctrl_result2', result);
 			userDashboardService.getUserData().then(function(result){
-				console.log('Ctrl_result', result);
+				console.log('LOCATION Ctrl_result', result);
 				$scope.showUserData = result;
 			});
 			$location.path('/edit-profile');
@@ -70,9 +80,9 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 	$scope.updateGender = function(gender){
 		editProfileService.updateGender(gender)
 		.then(function(result){
-			console.log('Ctrl_result2', result);
+			// console.log('Ctrl_result2', result);
 			userDashboardService.getUserData().then(function(result){
-				console.log('Ctrl_result', result);
+				console.log('GENDER Ctrl_result', result);
 				$scope.showUserData = result;
 			});
 			$location.path('/edit-profile');
@@ -82,9 +92,9 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 	$scope.updateBirthday = function(birthday){
 		editProfileService.updateBirthday(birthday)
 		.then(function(result){
-			console.log('Ctrl_result2', result);
+			// console.log('Ctrl_result2', result);
 			userDashboardService.getUserData().then(function(result){
-				console.log('Ctrl_result', result);
+				console.log('BIRTHDAY Ctrl_result', result);
 				$scope.showUserData = result;
 			});
 			$location.path('/edit-profile');
@@ -94,9 +104,9 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 	$scope.updateBio = function(bio){
 		editProfileService.updateBio(bio)
 		.then(function(result){
-			console.log('Ctrl_result2', result);
+			// console.log('Ctrl_result2', result);
 			userDashboardService.getUserData().then(function(result){
-				console.log('Ctrl_result', result);
+				console.log('BIO Ctrl_result', result);
 				$scope.showUserData = result;
 			});
 			$location.path('/edit-profile');
@@ -107,9 +117,9 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 		console.log('foodsObj in CTRL', foodsObj);
 		editProfileService.updateFoods(foodsObj)
 		.then(function(result){
-			console.log('Ctrl_result2', result);
+			// console.log('Ctrl_result2', result);
 			userDashboardService.getUserData().then(function(result){
-				console.log('Ctrl_result', result);
+				console.log('FOODS Ctrl_result', result);
 				$scope.showUserData = result;
 			});
 			$location.path('/edit-profile');

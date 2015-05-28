@@ -1,3 +1,8 @@
-<p>Username</p> 
-<input type="text" placeholder="{{showUserData.username}}" ng-model="username" />
-<button ng-click="updateUsername(username)">Save</button>
+<div class="row header">
+	<h2>Change Your Username</h2>
+</div>
+<h4>From {{showUserData.username}} to...</h4>
+<input class="inputfield" type="text" placeholder="{{showUserData.username}}" ng-model="username" />
+<div class="clearfix"></div>
+<button class="save" ng-click="updateUsername(username)">Save</button>
+<button class="cancel" ng-click="cancel()">Cancel</button>
