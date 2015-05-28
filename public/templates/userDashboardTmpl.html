@@ -3,22 +3,22 @@
 </div>
 <div class="row">
 	<h2>Welcome back, {{ showUserData.firstName }}!</h2>
-	<a ui-sref="editProfile">Edit Profile</a>
+	<p><a href="/#/user/{{showUserData.username}}">View Profile</a></p>
+	<p><a ui-sref="editProfile">Edit Profile</a></p>
 	<div ui-view></div>
 </div>
 
 
 <div class="row">
 	<h2>Suggested Foodie Matches</h2>
-	<!-- {{suggestedUsers}} -->
 	<div ng-repeat="user in suggestedUsers">
-		{{user.username}} a.k.a. {{user.firstName}}
+		<a href="/#/user/{{user.username}}">{{user.username}}</a> a.k.a. {{user.firstName}}
 		{{user.location}}
 		{{user.gender}}
 		<br />
 		Foods you both like:
 		<ul>
 			<li ng-repeat="cuisine in user.matchedFoods"> {{cuisine}} </li>
-		</ul>	
+		</ul>
 	</div>
 </div>

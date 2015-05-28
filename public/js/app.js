@@ -17,6 +17,19 @@ app.config(function($stateProvider, $urlRouterProvider){
     controller: "loginCtrl"
   })
   // PUBLIC PROFILE
+  // .state('myProfile', {
+  //   url: "/user" + "/:myUsername",
+  //   templateUrl: "../templates/userProfileTmpl.html",
+  //   controller: "userProfileCtrl",
+  //   resolve: {
+  //     myRef: function(userProfileService, $stateParams){
+  //       console.log("userRef resolve firing");
+  //       console.log('$stateParams', $stateParams);
+  //       console.log('$stateParams.myUsername', $stateParams.myUsername);
+  //       return userProfileService.myPublicData($stateParams.myUsername);
+  //     }
+  //   }
+  // })
   .state('userProfile', {
     url: "/user" + "/:username",
     templateUrl: "../templates/userProfileTmpl.html",

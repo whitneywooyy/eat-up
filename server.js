@@ -109,6 +109,7 @@
 	}));
 
 // ENDPOINTS
+	// Create a New User
 	app.post('/api/new-user'), function(req, res){
 		console.log('req.body', req.body);
 		User.create(req.body, function(err, response){
@@ -117,7 +118,7 @@
 		else res.json(response);
 		});
 	};
-
+	// View Any Users' Profile (Including Your Own)
 	app.get('/api/pub/:username', function(req, res){
 		var username = req.params.username;
 		// console.log('username', username);
@@ -130,11 +131,12 @@
 				// res.redirect('/user/:username');
 			}
 		});
-	});	// End .get
+	});
+	// View Your Dashboard
 	app.get('/api/dashboard', requireAuth, function(req, res) {
 		// console.log("Current user ", req.user.id)
 		// console.log('req on req', req.user);
-		User.findOne({facebookId: req.user.id}, function(err, user){
+		User.findOne({ facebookId: req.user.id }, function(err, user){
 			if (err) {
 				res.send("There was an error");
 			} else {
@@ -142,17 +144,7 @@
 			}
 		})
 	});
-	app.get('/api/public-profile', function(req, res) {
-		// console.log("Current user ", req.user.id)
-		// console.log('req on req', req.user);
-		User.findOne({facebookId: req.user.id}, function(err, user){
-			if (err) {
-				res.send("There was an error");
-			} else {
-				res.json(user);
-			}
-		})
-	});
+	// Return Suggested Users Based on Food Interests
 	app.get('/api/suggested-users', function(req, res) {
 		User.find({}, function(err, users) {
 			if (err) {
@@ -168,7 +160,7 @@
 		});
 	});
 
-	// EDIT USER PROFILE ENDPOINTS
+	// EDITING USER PROFILE ENDPOINTS
 	app.put('/api/user/name', function(req, res){
 		console.log('req.body', req.body);
 		console.log('req.user!!!', req.user);
