@@ -1,4 +1,6 @@
+
 // DEPENDENCIES
+	var dotenv = require('dotenv').load();
 	var express = require('express');
 	var mongoose = require('mongoose');
 	var passport = require('passport');
@@ -25,9 +27,12 @@
 // EXPRESS
 	var app = express();
 
-// SERVER VARIABLES
+// ENVIRONMENT VARIABLES
 	var port = 8888;
 	var mongoUri = 'mongodb://localhost:27017/eatup';
+	var FACEBOOK_ID = process.env.FACEBOOK_APP_ID;
+	var FACEBOOK_SECRET = process.env.FACEBOOK_APP_SECRET;
+	var onlinePort = process.env.EXPRESS_PORT;
 
 // CONNECTIONS
 	mongoose.connect(mongoUri);
@@ -70,8 +75,8 @@
 	});
 	passport.use(new FacebookStrategy({
 		// Eat Up App - Facebook Developers
-	    clientID: FACEBOOK_APP_ID,
-	    clientSecret: FACEBOOK_APP_SECRET,
+	    clientID: FACEBOOK_ID,
+	    clientSecret: FACEBOOK_SECRET,
 	    callbackURL: "http://localhost:" + port + "/auth/facebook/callback",
 	    profileFields: ['id', 'age_range', 'email', 'gender', 'first_name', 'last_name', 'location', 'picture']
 	  }, function(accessToken, refreshToken, profile, done) {
@@ -288,6 +293,6 @@
 	});
 
 // LISTENING
-	app.listen(process.env.EXPRESS_PORT || port, function() {
+	app.listen(onlinePort || port, function() {
 	  console.log('Listening on port ', port);
 	});
