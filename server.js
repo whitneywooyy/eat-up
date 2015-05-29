@@ -1,5 +1,3 @@
-
-
 // DEPENDENCIES
 	var express = require('express');
 	var mongoose = require('mongoose');
@@ -290,6 +288,6 @@
 	});
 
 // LISTENING
-	app.listen(port, function() {
+	app.listen(process.env.EXPRESS_PORT || port, function() {
 	  console.log('Listening on port ', port);
 	});
