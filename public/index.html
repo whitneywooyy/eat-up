@@ -2,31 +2,27 @@
 <html lang="en" ng-app="eatUp">
 <head>
 	<title>Eat Up!</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="./styles/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<!-- <div ng-controller="userProfileCtrl">{{test}}</div> -->
 	<header>
-		<nav class="navbar navbar-right">
-		<a ui-sref="home" class="navbar-brand">Eat Up!</a>
-			<ul class="nav navbar-nav">
+		<nav class="navbar">
+			<ul>
 				<!-- <li><a ui-sref="userProfile.userDashboard.messages" title="Your Messages">Your Messages</a></li> -->
-				<li><a ui-sref="browseRestaurants" title="Browse Restaurants">Browse Restaurants</a></li>
+				<!-- <li><a ui-sref="browseRestaurants" title="Browse Restaurants">Browse Restaurants</a></li> -->
+				<li><a ui-sref="home" title="Eat Up!">Eat Up!</a></li>
 				<li><a ui-sref="browseUsers" title="Browse Users">Browse Users</a></li>
 				<li><a ui-sref="userDashboard" title="Dashboard">Dashboard</a></li>
 				<li><a href="/auth/facebook" title="Facebook Login">Login/Register with Facebook</a></li>
 				<li><a href="/logout" title="logout">Logout</a></li>
-				<!-- <li><a href="/api/test" title="test">Test</a></li> -->
 			</ul>
 		</nav>
 	</header>
-	<!-- <input type="text" ng-model="another" /> {{another}} -->
-	<div class="clearfix"></div>
+	<div class="intro-space">
+		<img class="intro-img" src="./images/food1.jpg" />
+	</div>
 	<div class="container">
 		<div ui-view></div>
 	</div>

@@ -2,7 +2,76 @@ html, body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	font-family: 'Open Sans', sans-serif;
 }
+a:hover {
+	cursor: pointer;
+}
+.intro-space {
+	width: 100%;
+	min-width: 600px;
+	clear: both;
+}
+.intro-img {
+	width: 100%;
+}
+header, .container {
+	width: 70%;
+	margin: 0 auto;
+}
+.navbar {
+	float: right;
+	color: #ccc;
+}
+.navbar ul li {
+	display: inline;
+}
+.navbar ul li a, .navbar ul li a:visited, .navbar ul li a:active {
+	text-decoration: none;
+	border-right: 1px solid #ddd;
+	padding: 5px 10px;
+}
+.navbar ul li a:hover {
+	background-color: #aaa;
+	color: white;
+}
+.container {
+	clear: both;
+}
+.home {
+	position: absolute;
+	top: 120px;
+	left: 15%;
+	color: white;
+	margin-right: 15%;
+}
+.intro {
+	text-shadow: 2px 2px #333;
+	width: 70%;
+}
+.intro h1 {
+	font-size: 3em;
+	line-height: 10%;
+	min-width: 300px;
+}
+.intro h3 {
+	font-size: 1.5em;
+	min-width: 300px;
+}
+button.login {
+	background-color: white;
+	padding: 20px;
+	font-size: 1.5em;
+	border-radius: 15px;
+	border: none;
+	margin-top: 10px;
+}
+
+
+
+
+
+/* 
 .main-nav {
 	float: right;
 	margin-right: 20px;
@@ -25,3 +94,4 @@ html, body {
 .inputfield {
 	margin-bottom: 10px;
 }
+*/
