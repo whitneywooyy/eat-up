@@ -168,5 +168,21 @@ app.service('editProfileService', function($http, $q){
 		})
 		return dfd.promise;
 	};	// End .updateLevel
+
+	this.updatePicture = function(imageUrl){
+		console.log('imageUrl in SERVICE', imageUrl);
+		var dfd = $q.defer();
+		$http({
+			method: "put",
+			url: '/api/user/picture',
+			data: {
+				imageUrl: imageUrl
+			}
+		}).then(function(response){
+			console.log('imageUrl service response', response);
+			return dfd.resolve(response.data);
+		})
+		return dfd.promise;
+	};	// End .updatePicture
 	
 });	// End app.service

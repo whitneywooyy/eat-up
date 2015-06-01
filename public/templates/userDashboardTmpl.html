@@ -1,5 +1,5 @@
 <div class="intro-space">
-	<img class="intro-img" src="./images/food3.jpg" />
+	<img class="intro-img" src="./images/food5.jpg" />
 </div>
 <div class="container">
 	<div class="home">
@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div class="suggested-users">
-		<h2>Suggested Foodie Matches</h2>
+		<h2>Suggested Foodie Matches For You</h2>
 		<div class="user-listing" ng-repeat="user in suggestedUsers">
 			<div class="user-listing-name"><a href="/#/user/{{user.username}}"><h2>{{user.username}}</a> a.k.a. {{user.firstName}}</h2>
 			</div>
@@ -20,7 +20,7 @@
 				<div class="user-listing-details-left">
 					<div class="user-listing-location">{{user.location}}</div>
 					<div class="user-listing-gender">{{user.gender}}</div>
-					<div class="user-listing-level"><span ng-repeat="(key, val) in user.level">{{val}}</span></div>
+					<div class="user-listing-level"><span ng-repeat="(key, val) in user.level">{{val}} eater</span></div>
 					<div class="user-listing-foods">
 						<label>Foods you both like:</label>
 							<ul>

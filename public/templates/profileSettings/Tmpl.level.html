@@ -1,23 +1,30 @@
-<div class="row header">
-	<h2>Change Your Foodie Level</h2>
+<div class="intro-space">
+	<img class="intro-img" src="./images/food6.jpg" />
 </div>
-<h4>From <span ng-repeat="(type, level) in showUserData.level">{{level}}</span> to...</h4>
-
-<form ng-model="levels">
-	<label>
-		<input type="radio" ng-model="level.type" value="Adventurous" checked />
-	Adventurous</label><br />
-	<p>You are super epicurious and are in constant pursuit of indulging in great, authentic, or unique foods from all over the world. You thrive on flavor. And, you'll try literally ANYTHING at least once!</p>
-	<label>
-		<input type="radio" ng-model="level.type" value="Open-minded" />
-	Open-minded</label><br />
-	<p>You believe in mixing it up and trying new kinds of foods whenever possible. The only foods you won't touch are those containing insects, live animals, or anything else you have been conditioned to be appalled by.</p>
-	<label>
-		<input type="radio" ng-model="level.type" value="Favorite-player" />
-	Favorite-player</label><br />
-	<p>It's not that you're unwilling to try new things, it's that you already have your favorites - the 'tried and true' dishes that never disappoint - and those are what you like to stick with. You also prefer flavors that don't stray too far from what you're used to.</p>
-</form>
-
-<div class="clearfix"></div>
-<button class="save" ng-click="updateLevel(level)">Save</button>
-<button class="cancel" ng-click="cancel()">Cancel</button>
+<div class="container">
+	<div class="home">
+		<div class="intro">
+			<h1>Change Your Foodie Level</h1>
+		</div>
+	</div>
+		<div class="input-fields">
+			<h4>From <span ng-repeat="(type, level) in showUserData.level">{{level}}</span> to...</h4>
+			<form ng-model="levels">
+				<label>
+					<input type="radio" ng-model="level.type" value="Adventurous" checked />
+				Adventurous</label><br />
+				<p>You are super epicurious and are in constant pursuit of indulging in great, authentic, or unique foods from all over the world. You thrive on flavor. And, you'll try literally ANYTHING at least once!</p>
+				<label>
+					<input type="radio" ng-model="level.type" value="Open-minded" />
+				Open-minded</label><br />
+				<p>You believe in mixing it up and trying new kinds of foods whenever possible. The only foods you won't touch are those containing insects, live animals, or anything else you have been conditioned to be appalled by.</p>
+				<label>
+					<input type="radio" ng-model="level.type" value="Favorite-player" />
+				Favorite-player</label><br />
+				<p>It's not that you're unwilling to try new things, it's that you already have your favorites - the 'tried and true' dishes that never disappoint - and those are what you like to stick with. You also prefer flavors that don't stray too far from what you're used to.</p>
+			</form>
+			<div class="clearfix"></div>
+			<button class="login-dark" ng-click="updateLevel(level)">Save</button>
+			<button class="login-red" ng-click="cancel()">Cancel</button>
+		</div>
+</div>

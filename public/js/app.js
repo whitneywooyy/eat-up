@@ -111,6 +111,11 @@ app.config(function($stateProvider, $urlRouterProvider){
     templateUrl: "../templates/profileSettings/Tmpl.level.html",
     controller: "editProfileCtrl"
   })
+  .state('picture', {
+    url: "/edit-profile/picture",
+    templateUrl: "../templates/profileSettings/Tmpl.picture.html",
+    controller: "editProfileCtrl"
+  })
   // DELETE ENTIRE PROFILE
   .state('deleteProfile', {
     url: "/edit-profile/delete-profile",

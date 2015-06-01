@@ -1,10 +1,19 @@
-<div class="row header">
-	<h2>Change Your Bio</h2>
+<div class="intro-space">
+	<img class="intro-img" src="./images/food6.jpg" />
 </div>
-<h4>From:</h4> 
-"{{showUserData.bio}}" 
-<h4>to...</h4>
-<textarea class="inputfield" ng-model="bio" /></textarea>
-<div class="clearfix"></div>
-<button class="save" ng-click="updateBio(bio)">Save</button>
-<button class="cancel" ng-click="cancel()">Cancel</button>
+<div class="container">
+	<div class="home">
+		<div class="intro">
+			<h1>Change Your Bio</h1>
+		</div>
+	</div>
+		<div class="input-fields">
+			<h4>From:</h4> 
+			"{{showUserData.bio}}" 
+			<h4>to...</h4>
+			<textarea class="inputfield" ng-model="bio" /></textarea>
+			<div class="clearfix"></div>
+			<button class="login-dark" ng-click="updateBio(bio)">Save</button>
+			<button class="login-red" ng-click="cancel()">Cancel</button>
+		</div>
+</div>

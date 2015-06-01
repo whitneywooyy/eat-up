@@ -4,14 +4,14 @@
 <div class="container">
 	<div class="home">
 		<div class="intro">
-			<h1>Change Your Location</h1>
+			<h1>Change Your Profile Picture</h1>
 		</div>
 	</div>
 		<div class="input-fields">
-			<h4>From {{showUserData.location}} to...</h4>
-			<input class="inputfield" type="text" placeholder="{{showUserData.location}}" ng-model="location" />
+			<h3>Please enter an image URL</h3>
+			<input class="inputfield" ng-model="imageUrl" />
 			<div class="clearfix"></div>
-			<button class="login-dark" ng-click="updateLocation(location)">Save</button>
+			<button class="login-dark" ng-click="updatePicture(imageUrl)">Save</button>
 			<button class="login-red" ng-click="cancel()">Cancel</button>
 		</div>
 </div>

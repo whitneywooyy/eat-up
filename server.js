@@ -274,6 +274,17 @@
 			return res.json(user);
 		});
 	});
+	app.put('/api/user/picture', function(req, res){
+		console.log('req.body', req.body);
+		console.log('req.user-bio!', req.user);
+		User.findOneAndUpdate({ facebookId: req.user.id }, { facebookProfilePic: req.body.imageUrl }, { new: true }, function(err, user) {
+			if (err) {
+				console.log("can't update bio", err);
+			}
+			console.log('user', user);
+			return res.json(user);
+		});
+	});
 
 
 	// SOCIAL OAUTH

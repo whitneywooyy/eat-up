@@ -139,4 +139,17 @@ app.controller('editProfileCtrl', function($scope, userDashboardService, editPro
 		});
 	};	// End .updateLevel
 
+	$scope.updatePicture = function(imageUrl){
+		console.log('picture in CTRL', imageUrl);
+		editProfileService.updatePicture(imageUrl)
+		.then(function(result){
+			// console.log('Ctrl_result2', result);
+			userDashboardService.getUserData().then(function(result){
+				console.log('imageUrl Ctrl_result', result);
+				$scope.showUserData = result;
+			});
+			$location.path('/edit-profile');
+		});
+	};	// End .updateLevel
+
 });	// End app.controller

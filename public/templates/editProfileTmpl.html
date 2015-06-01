@@ -1,56 +1,70 @@
-<div class="row header">
+<div class="intro-space">
+	<img class="intro-img" src="./images/food6.jpg" />
+</div>
+<div class="container">
+	<div class="home">
+		<div class="intro">
+			<h1>Edit Your Profile</h1>
+		</div>
+	</div>
 	<h2>General</h2>
-</div>
+	<div class="profile-user-listing-details">
+		<div class="profile-user-listing-details-left edit-profile-info-left">
+			<div class="profile-info">
+				<div class="bold">Name</div> 
+				<div class="category">{{showUserData.firstName}} {{showUserData.lastName}} <a ui-sref="name">Edit</a></div>
+			</div>
+			<div class="profile-info">
+				<div class="bold">Email</div> 
+				<div class="category">{{showUserData.email}} <a ui-sref="email">Edit</a></div>
+			</div>
+			<div class="profile-info">
+				<div class="bold">Username</div> 
+				<div class="category">{{showUserData.username}} <a ui-sref="username">Edit</a></div>
+			</div>
+			<div class="profile-info">
+				<div class="bold">Password</div> 
+				<div class="category"><a ui-sref="password">Edit</a></div>
+			</div>
+			<div class="profile-info">
+				<div class="bold">Location</div> 
+				<div class="category">{{showUserData.location}} <a ui-sref="location">Edit</a></div>
+			</div>
+			<div class="profile-info">
+				<div class="bold">Gender</div> 
+				<div class="category">{{showUserData.gender}} <a ui-sref="gender">Edit</a></div>
+			</div>
+			<!-- <div class="profile-info">
+				<div class="bold">Birthday</div> 
+				<div class="category">{{showUserData.birthday}} <a ui-sref="birthday">Edit</a></div>
+			</div> -->
+			<div class="profile-info">
+				<div class="bold">Bio</div> 
+				<div class="category">{{showUserData.bio}} <a ui-sref="bio">Edit</a></div>
+			</div>
+			<h2>Your Food Interests</h2>
+			<div class="profile-info">
+				<div class="bold">Favorite Cuisines</div>
+				<div class="clearfix"></div>
+					<ul>
+						<li ng-repeat="(cuisine, truthy) in showUserData.foods"> {{cuisine}} </li>
+						<li><a ui-sref="foods">Edit</a></li>
+					</ul>		 
+			</div>
+			<div class="profile-info">
+				<div class="bold">Foodie Level:</div>
+				<div class="category" ng-repeat="(type, level) in showUserData.level">You are an <span class="bold">{{level}}</span> eater.</div> <a ui-sref="level">Edit</a>
+			</div>
+		</div>
+		<div class="profile-user-listing-details-right">
+			<div class="profile-info">
+				<div class="bold">Profile Picture <a ui-sref="picture"><span class="non-bold">Edit</span></a></div>
+				<div class="category"><img class="profile-picture" src="{{showUserData.facebookProfilePic}}" />
+			</div>
+		</div>
+	</div>
 
-<div class="row">
-	<div class="bold col-md-1">Name</div> 
-	<div class="category">{{showUserData.firstName}} {{showUserData.lastName}} <a ui-sref="name">Edit</a></div>
-</div>
-<div class="row">
-	<div class="bold col-md-1">Email</div> 
-	<div class="category">{{showUserData.email}} <a ui-sref="email">Edit</a></div>
-</div>
-<div class="row">
-	<div class="bold col-md-1">Username</div> 
-	<div class="category">{{showUserData.username}} <a ui-sref="username">Edit</a></div>
-</div>
-<div class="row">
-	<div class="bold col-md-1">Password</div> 
-	<div class="category"><a ui-sref="password">Edit</a></div>
-</div>
-<div class="row">
-	<div class="bold col-md-1">Location</div> 
-	<div class="category">{{showUserData.location}} <a ui-sref="location">Edit</a></div>
-</div>
-<div class="row">
-	<div class="bold col-md-1">Gender</div> 
-	<div class="category">{{showUserData.gender}} <a ui-sref="gender">Edit</a></div>
-</div>
-<div class="row">
-	<div class="bold col-md-1">Birthday</div> 
-	<div class="category">{{showUserData.birthday}} <a ui-sref="birthday">Edit</a></div>
-</div>
-<div class="row">
-	<div class="bold col-md-1">Bio</div> 
-	<div class="category">{{showUserData.bio}} <a ui-sref="bio">Edit</a></div>
-</div>
-
-<div class="row header">
-	<h2>Your Food Interests</h2>
-</div>
-<div class="row">
-	<div class="bold col-md-3">Favorite Cuisines</div>
-	<div class="clearfix"></div>
-		<ul>
-			<li ng-repeat="(cuisine, truthy) in showUserData.foods"> {{cuisine}} </li>
-			<li><a ui-sref="foods">Edit</a></li>
-		</ul>		 
-</div>
-<div class="row">
-	<div class="bold col-md-2">Foodie Level</div>
-	<div class="category" ng-repeat="(type, level) in showUserData.level">You are an <span class="bold">{{level}}</span> eater.</div> <a ui-sref="level">Edit</a>
-</div>
-
-<div class="row">
-	<a ui-sref="deleteProfile">Delete Profile</a>
+	<!-- <div class="profile-info">
+		<a ui-sref="deleteProfile">Delete Profile</a>
+	</div> -->
 </div>

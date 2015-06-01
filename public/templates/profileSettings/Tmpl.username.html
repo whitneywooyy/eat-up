@@ -1,8 +1,17 @@
-<div class="row header">
-	<h2>Change Your Username</h2>
+<div class="intro-space">
+	<img class="intro-img" src="./images/food6.jpg" />
 </div>
-<h4>From {{showUserData.username}} to...</h4>
-<input class="inputfield" type="text" placeholder="{{showUserData.username}}" ng-model="username" />
-<div class="clearfix"></div>
-<button class="save" ng-click="updateUsername(username)">Save</button>
-<button class="cancel" ng-click="cancel()">Cancel</button>
+<div class="container">
+	<div class="home">
+		<div class="intro">
+			<h1>Change Your Username</h1>
+		</div>
+	</div>
+		<div class="input-fields">
+			<h4>From {{showUserData.username}} to...</h4>
+			<input class="inputfield" type="text" placeholder="{{showUserData.username}}" ng-model="username" />
+			<div class="clearfix"></div>
+			<button class="login-dark" ng-click="updateUsername(username)">Save</button>
+			<button class="login-red" ng-click="cancel()">Cancel</button>
+		</div>
+</div>
