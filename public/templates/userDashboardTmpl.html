@@ -1,24 +1,38 @@
-<div class="row header">
-	<h1>Your Dashboard</h1>
+<div class="intro-space">
+	<img class="intro-img" src="./images/food3.jpg" />
 </div>
-<div class="row">
-	<h2>Welcome back, {{ showUserData.firstName }}!</h2>
-	<p><a href="/#/user/{{showUserData.username}}">View Profile</a></p>
-	<p><a ui-sref="editProfile">Edit Profile</a></p>
-	<div ui-view></div>
-</div>
-
-
-<div class="row">
-	<h2>Suggested Foodie Matches</h2>
-	<div ng-repeat="user in suggestedUsers">
-		<a href="/#/user/{{user.username}}">{{user.username}}</a> a.k.a. {{user.firstName}}
-		{{user.location}}
-		{{user.gender}}
-		<br />
-		Foods you both like:
-		<ul>
-			<li ng-repeat="cuisine in user.matchedFoods"> {{cuisine}} </li>
-		</ul>
+<div class="container">
+	<div class="home">
+		<div class="intro">
+			<h1>Your Dashboard</h1>
+			<h2>Welcome back, {{ showUserData.firstName }}!</h2>
+			<a href="/#/user/{{showUserData.username}}"><button class="login">View Your Profile</button></a>
+			<a ui-sref="editProfile"><button class="login">Edit Your Profile</button></a>
+			<div ui-view></div>
+		</div>
+	</div>
+	<div class="suggested-users">
+		<h2>Suggested Foodie Matches</h2>
+		<div class="user-listing" ng-repeat="user in suggestedUsers">
+			<div class="user-listing-name"><a href="/#/user/{{user.username}}"><h2>{{user.username}}</a> a.k.a. {{user.firstName}}</h2>
+			</div>
+			<div class="user-listing-details">
+				<div class="user-listing-details-left">
+					<div class="user-listing-location">{{user.location}}</div>
+					<div class="user-listing-gender">{{user.gender}}</div>
+					<div class="user-listing-level"><span ng-repeat="(key, val) in user.level">{{val}}</span></div>
+					<div class="user-listing-foods">
+						<label>Foods you both like:</label>
+							<ul>
+								<li ng-repeat="cuisine in user.matchedFoods"> {{cuisine}} </li>
+							</ul>
+					</div>
+				</div>
+				<a href="/#/user/{{user.username}}">
+				<div class="user-listing-details-right">
+					<img class="user-listing-photo" src="{{user.facebookProfilePic}}" />
+				</div></a>
+			</div>
+		</div>
 	</div>
 </div>

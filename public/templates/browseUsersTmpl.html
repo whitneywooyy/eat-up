@@ -1,13 +1,29 @@
-<h1>Browse Users</h1>
-<div ng-repeat="user in showUserData">
-	<p><a href="/#/user/{{user.username}}">{{user.username}}</a> a.k.a {{user.firstName}}</p>
-	<p>{{user.gender}}</p>
-	<p>{{user.location}}</p>
-	<p><span ng-repeat="(key, val) in user.level">{{val}}</span></p>
-	<p>Favorite Foods:
-	<ul>
-		<li ng-repeat="(food, truthy) in user.foods">{{food}}</li>
-	</ul>
-	</p>
-	<hr>
+<div class="intro-space">
+	<img class="intro-img" src="./images/food2.jpg" />
+</div>
+<div class="container">
+	<div class="browse-users">
+		<div class="intro">
+			<h1>Browse Foodies</h1>
+		</div>
+	</div>
+	<div class="user-listing" ng-repeat="user in showUserData">
+		<div class="user-listing-name"><a href="/#/user/{{user.username}}"><h2>{{user.username}}</a> a.k.a {{user.firstName}}</h2></div>
+		<div class="user-listing-details">
+			<div class="user-listing-details-left">
+				<div class="user-listing-location">{{user.location}}</div>
+				<div class="user-listing-gender">{{user.gender}}</div>
+				<div class="user-listing-level"><span ng-repeat="(key, val) in user.level">{{val}}</span></div>
+				<div class="user-listing-foods">
+				<label>Favorite Foods:</label>
+					<ul>
+						<li ng-repeat="(food, truthy) in user.foods">{{food}}</li>
+					</ul>
+				</div>
+			</div>
+			<a href="/#/user/{{user.username}}"><div class="user-listing-details-right">
+				<img class="user-listing-photo" src="{{user.facebookProfilePic}}" />
+			</div></a>
+		</div>
+	</div>
 </div>

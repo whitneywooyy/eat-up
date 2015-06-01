@@ -11,6 +11,8 @@ a:hover {
 	width: 100%;
 	min-width: 600px;
 	clear: both;
+	max-height: 380px;
+	overflow: hidden;
 }
 .intro-img {
 	width: 100%;
@@ -38,7 +40,7 @@ header, .container {
 .container {
 	clear: both;
 }
-.home {
+.home, .browse-users {
 	position: absolute;
 	top: 120px;
 	left: 15%;
@@ -47,7 +49,7 @@ header, .container {
 }
 .intro {
 	text-shadow: 2px 2px #333;
-	width: 70%;
+	/*width: 70%;*/
 }
 .intro h1 {
 	font-size: 3em;
@@ -58,6 +60,9 @@ header, .container {
 	font-size: 1.5em;
 	min-width: 300px;
 }
+.browse-users>.intro {
+	width: 100%;
+}
 button.login {
 	background-color: white;
 	padding: 20px;
@@ -66,32 +71,89 @@ button.login {
 	border: none;
 	margin-top: 10px;
 }
-
-
-
-
-
-/* 
-.main-nav {
+.user-listing {
+	width: 40%;
+	min-height: 400px;
+	display: inline-block;
+	background: #8B7B75;
+	margin-top: 30px;
+	margin-right: 50px;
+	float: left;
+	padding: 0 2%;
+}
+.user-listing-name {
+	padding: 10px;
+	text-align: center;
+	color: white;
+	border-bottom: 2px solid #aaa;
+}
+.user-listing-name a {
+	color: #FE9E21;
+	text-decoration: none;
+}
+.user-listing-details-left {
+	float: left;
+	width: 50%;
+	padding: 5% 3%;
+	overflow-wrap: break-word;
+	text-align: right;
+}
+.user-listing-details-right {
 	float: right;
-	margin-right: 20px;
+	width: 40%;
+	border: 1px solid;
+	height: 200px;
+	margin: 20px 1%;
 }
-.main-nav ul li {
-	display: inline;
-	border-right: 1px solid gray;
-	padding: 0 10px;
+.user-listing-location {
+	font-weight: bold;
+	font-size: 1.1em;
+	color: white;
 }
-.bold {
+.user-listing-foods {
+	margin-top: 10px;
+	text-align: left;
+}
+.user-listing-foods label {
+	font-weight: bold;
+	color: white;
+}
+.user-listing-foods ul {
+	margin-top: 0;
+}
+.facebook-login {
+	margin-top: 10px;
+}
+.profile-user-listing-details {
+	margin-top: 30px;
+}
+.profile-user-listing-details-left {
+	float: left;
+	width: 40%;
+	height: 400px;
+	margin-right: 50px;
+}
+img.profile-user-listing-photo {
+	border: 1px solid;
+	width: 100%;
+	height: auto;
+}
+.profile-user-listing-details-right {
+	float: right;
+	width: 50%;
+}
+.profile-user-listing-bio {
+	font-size: 2em;
+}
+.profile-user-listing-gender, .profile-user-listing-level, .profile-user-listing-foods {
+	font-size: 1.3em;
+}
+.profile-user-listing-foods {
+	margin-top: 20px;
+}
+.profile-user-listing-foods label {
 	font-weight: bold;
 }
-.category {
-	display: inline;
+.profile-user-listing-foods ul {
+	margin-left: 20px;
 }
-.row.header {
-	border-bottom: 1px solid gray;
-	margin-bottom: 20px;
-}
-.inputfield {
-	margin-bottom: 10px;
-}
-*/
