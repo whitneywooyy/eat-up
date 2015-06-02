@@ -77,7 +77,7 @@
 		// Eat Up App - Facebook Developers
 	    clientID: FACEBOOK_ID,
 	    clientSecret: FACEBOOK_SECRET,
-	    callbackURL: "http://localhost:" + port + "/auth/facebook/callback",
+	    callbackURL: CALLBACK_URL,
 	    profileFields: ['id', 'age_range', 'email', 'gender', 'first_name', 'last_name', 'location', 'picture']
 	  }, function(accessToken, refreshToken, profile, done) {
 		// console.log("profile", profile);
