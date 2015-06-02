@@ -33,6 +33,7 @@
 	var FACEBOOK_ID = process.env.FACEBOOK_APP_ID;
 	var FACEBOOK_SECRET = process.env.FACEBOOK_APP_SECRET;
 	var onlinePort = process.env.EXPRESS_PORT;
+	var CALLBACK_URL = process.env.CALLBACK_URL;
 
 // CONNECTIONS
 	mongoose.connect(mongoUri);
